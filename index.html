@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus to Company - Transform Your Career Journey</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- External Libraries -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/modern-effects.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <div class="logo" onclick="scrollToSection('home')">
+                <i class="fas fa-graduation-cap"></i>
+                Campus To Company
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About Us</a></li>
+                    <li><a href="#courses" class="nav-link">Courses</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" placeholder="Enter your email to Search Course" id="searchInput">
+                    <i class="fas fa-search"></i>
+                </div>
+                <button class="search-btn" onclick="performSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge" data-aos="fade-right">
+                    <i class="fas fa-star"></i> #1 Learning Platform
+                </div>
+                <h1 class="hero-title" data-aos="fade-right" data-aos-delay="200">
+                    Transform Your<br>
+                    <span class="highlight typed-text" id="typedText">Career Journey</span>
+                </h1>
+                <p class="hero-subtitle" data-aos="fade-right" data-aos-delay="400">
+                    Bridge the gap between campus and corporate world. 
+                    Master industry-relevant skills with expert-led courses 
+                    and real-world projects.
+                </p>
+                <div class="stats-container" data-aos="fade-up" data-aos-delay="600">
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <span class="counter" data-target="50000">0</span>K+ Students
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-book"></i>
+                        <span class="counter" data-target="200">0</span>+ Courses
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span class="counter" data-target="95">0</span>% Success Rate
+                    </div>
+                </div>
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="800">
+                    <a href="#courses" class="btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        Start Your Journey
+                    </a>
+                    <a href="#demo" class="btn-secondary" onclick="openModal()">
+                        <i class="fas fa-play"></i>
+                        Watch Demo
+                    </a>
+                </div>
+                <div class="course-search" data-aos="fade-up" data-aos-delay="1000">
+                    <input type="text" placeholder="What do you want to learn today?" id="courseSearchInput">
+                    <button class="btn-primary" onclick="searchCourses()">Explore</button>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left" data-aos-delay="400">
+                <div class="image-card">
+                    <div class="image-placeholder">
+                        <i class="fas fa-users fa-3x"></i><br>
+                        Students Learning Together
+                    </div>
+                    <div class="floating-stats top-right">
+                        <div class="stat-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div>
+                            <strong class="counter" data-target="2000">0</strong>+<br>
+                            <small>Online Courses</small>
+                        </div>
+                    </div>
+                    <div class="floating-stats bottom-left">
+                        <div class="stat-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <strong class="counter" data-target="95">0</strong>%<br>
+                            <small>Success Rate</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted Partners -->
+    <section class="partners" data-aos="fade-up">
+        <div class="partners-container">
+            <h3>Trusted by our awesome partners</h3>
+            <div class="partners-grid">
+                <div class="partner-logo" data-aos="zoom-in" data-aos-delay="100">Sheshadripuram</div>
+                <div class="partner-logo" data-aos="zoom-in" data-aos-delay="200">KLE</div>
+                <div class="partner-logo" data-aos="zoom-in" data-aos-delay="300">Surana</div>
+                <div class="partner-logo" data-aos="zoom-in" data-aos-delay="400">Tumkur University</div>
+                <div class="partner-logo" data-aos="zoom-in" data-aos-delay="500">Varadaraja</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-content" data-aos="fade-right">
+                <h2>Know about elearner <span class="highlight">learning platform</span></h2>
+                <p>Since the learning platform of education in several languages of our course training have been delivered worldwide.</p>
+                <div class="about-stats">
+                    <div class="about-stat" data-aos="flip-up" data-aos-delay="100">
+                        <div class="number counter" data-target="3">0</div>m+
+                        <div class="label">Total Students</div>
+                    </div>
+                    <div class="about-stat" data-aos="flip-up" data-aos-delay="300">
+                        <div class="number counter" data-target="70">0</div>k+
+                        <div class="label">Total Courses</div>
+                    </div>
+                    <div class="about-stat" data-aos="flip-up" data-aos-delay="500">
+                        <div class="number counter" data-target="100">0</div>+
+                        <div class="label">Expert Instructors</div>
+                    </div>
+                </div>
+                <button class="btn-primary">
+                    <i class="fas fa-book"></i>
+                    Read More
+                </button>
+            </div>
+            <div class="about-image" data-aos="fade-left">
+                <div class="about-image-placeholder">
+                    <i class="fas fa-laptop fa-3x"></i><br><br>
+                    Professional Learning Environment
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="courses-container">
+            <h2 data-aos="fade-up">Choose favorite course</h2>
+            <p class="subtitle" data-aos="fade-up" data-aos-delay="100">from Top categories</p>
+            
+            <div class="courses-filter" data-aos="fade-up" data-aos-delay="200">
+                <button class="filter-btn active" onclick="filterCourses('all')">All Courses</button>
+                <button class="filter-btn" onclick="filterCourses('technical')">Technical</button>
+                <button class="filter-btn" onclick="filterCourses('business')">Business</button>
+                <button class="filter-btn" onclick="filterCourses('creative')">Creative</button>
+            </div>
+            
+            <div class="courses-grid" id="coursesGrid">
+                <div class="course-card technical" data-aos="zoom-in" data-aos-delay="100" onclick="openCourseModal('Data Analytics')">
+                    <div class="course-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Data Analytics</h3>
+                    <p>Master data analysis and visualization techniques with real-world projects</p>
+                </div>
+                <div class="course-card business" data-aos="zoom-in" data-aos-delay="200" onclick="openCourseModal('Business Analytics')">
+                    <div class="course-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Business Analytics</h3>
+                    <p>Learn business intelligence and strategic analysis for better decision making</p>
+                </div>
+                <div class="course-card business" data-aos="zoom-in" data-aos-delay="300" onclick="openCourseModal('Executive HR')">
+                    <div class="course-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Executive HR</h3>
+                    <p>Human resource management and leadership skills for modern organizations</p>
+                </div>
+                <div class="course-card creative" data-aos="zoom-in" data-aos-delay="400" onclick="openCourseModal('Digital Marketing')">
+                    <div class="course-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <p>Complete digital marketing strategy and execution across all platforms</p>
+                </div>
+                <div class="course-card technical" data-aos="zoom-in" data-aos-delay="500" onclick="openCourseModal('SQL')">
+                    <div class="course-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>SQL</h3>
+                    <p>Database management and query optimization for data professionals</p>
+                </div>
+                <div class="course-card technical" data-aos="zoom-in" data-aos-delay="600" onclick="openCourseModal('Python')">
+                    <div class="course-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python</h3>
+                    <p>Programming fundamentals to advanced applications in various domains</p>
+                </div>
+                <div class="course-card business" data-aos="zoom-in" data-aos-delay="700" onclick="openCourseModal('Finance')">
+                    <div class="course-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Finance</h3>
+                    <p>Financial analysis and investment strategies for corporate finance</p>
+                </div>
+                <div class="course-card technical" data-aos="zoom-in" data-aos-delay="800" onclick="openCourseModal('Tally ERP')">
+                    <div class="course-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Tally ERP</h3>
+                    <p>Accounting software mastery and business processes automation</p>
+                </div>
+            </div>
+            <a href="#explore" class="explore-more" data-aos="fade-up" data-aos-delay="900">
+                More to explore <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Watch Demo</h2>
+            <p id="modalContent">Experience our interactive learning platform with this demo video showcasing real student success stories and course previews.</p>
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn-primary" onclick="closeModal()">
+                    <i class="fas fa-play"></i>
+                    Start Demo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="assets/js/particles-config.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/counters.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
