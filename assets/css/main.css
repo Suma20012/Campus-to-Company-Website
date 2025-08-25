@@ -116,7 +116,19 @@ a:hover {
     animation: spin 1s linear infinite;
 }
 
-/* ========== HEADER STYLES ========== */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ========== HEADER STYLES - FIXED LAYOUT ========== */
+/* ============================================
+   SIMPLE HEADER FIX - REPLACE ONLY THIS SECTION
+   Find the header section in your main.css and replace it with this
+   ============================================ */
+
+/* ========== HEADER STYLES - SIMPLE FIX ========== */
+/* ========== HEADER STYLES - SIMPLE FIX ========== */
 .header {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
@@ -134,16 +146,18 @@ a:hover {
     box-shadow: var(--shadow-lg);
 }
 
+/* 🎯 SIMPLE NAVIGATION CONTAINER FIX */
 .nav-container {
     max-width: var(--container-max);
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-4) var(--space-8);
+    padding: 1rem 2rem; /* Keep original padding */
     height: var(--header-height);
 }
 
+/* 🎯 LOGO - KEEP SIMPLE, JUST ENSURE LEFT ALIGNMENT */
 .logo {
     display: flex;
     align-items: center;
@@ -152,6 +166,8 @@ a:hover {
     color: var(--primary-color);
     cursor: pointer;
     transition: var(--transition-transform);
+    flex-shrink: 0; /* Prevent logo from shrinking */
+    margin-right: auto; /* Push everything else to the right */
 }
 
 .logo:hover {
@@ -167,12 +183,27 @@ a:hover {
     animation: float 3s ease-in-out infinite;
 }
 
+/* 🎯 NAVIGATION LINKS - KEEP IN CENTER */
 .nav-links {
     display: flex;
     list-style: none;
     gap: var(--space-8);
     margin: 0;
+    flex-grow: 1; /* Take available space */
+    justify-content: center; /* Center the nav links */
 }
+
+/* ========== REQUESTED NAV-MENU CHANGES ========== */
+.nav-menu {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+/* [All other code remains unchanged below this point] */
 
 .nav-links a {
     text-decoration: none;
@@ -204,11 +235,12 @@ a:hover {
     color: var(--primary-color);
 }
 
-/* ========== SEARCH CONTAINER ========== */
+/* 🎯 SEARCH CONTAINER - KEEP ON RIGHT */
 .search-container {
     display: flex;
     align-items: center;
     gap: var(--space-3);
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
 .search-box {
@@ -253,6 +285,81 @@ a:hover {
     box-shadow: var(--shadow-accent);
 }
 
+/* 🎯 THEME TOGGLE - ADD TO RIGHT OF SEARCH */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: var(--space-3); /* Add some space from search */
+    flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: rotate(180deg);
+}
+
+/* ========== MOBILE RESPONSIVE FIX ========== */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: var(--space-4);
+        padding: var(--space-4);
+        height: auto;
+    }
+    
+    .logo {
+        margin-right: 0; /* Reset margin for mobile */
+    }
+    
+    .nav-links {
+        gap: var(--space-4);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .search-container {
+        gap: var(--space-2);
+    }
+    
+    .search-box {
+        min-width: 200px;
+    }
+    
+    .theme-toggle {
+        margin-left: var(--space-2);
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-container {
+        flex-direction: column;
+        gap: var(--space-2);
+        width: 100%;
+    }
+    
+    .search-box {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .theme-toggle {
+        margin-left: 0;
+        align-self: center;
+    }
+}
+
 /* ========== HERO SECTION ========== */
 .hero {
     background: var(--gradient-hero);
@@ -277,6 +384,11 @@ a:hover {
         radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
         radial-gradient(circle at 40% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
     animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
 }
 
 .hero-container {
@@ -319,6 +431,11 @@ a:hover {
 .typed-text {
     border-right: 2px solid var(--accent-color);
     animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { border-right-color: var(--accent-color); }
+    51%, 100% { border-right-color: transparent; }
 }
 
 .hero-subtitle {
@@ -493,6 +610,11 @@ a:hover {
     animation: shimmer 2s infinite;
 }
 
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
 .floating-stats {
     position: absolute;
     background: rgba(255, 255, 255, 0.95);
@@ -505,6 +627,11 @@ a:hover {
     gap: var(--space-3);
     animation: floatUpDown 3s ease-in-out infinite;
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes floatUpDown {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
 }
 
 .floating-stats.top-right {
@@ -592,6 +719,102 @@ a:hover {
     box-shadow: var(--shadow-primary);
 }
 
+/* ========== RESPONSIVE DESIGN - HEADER FIXES ========== */
+@media (max-width: 1024px) {
+    .nav-container {
+        padding: 1rem;
+    }
+    
+    .logo {
+        left: 1rem;
+    }
+    
+    .header-controls {
+        right: 1rem;
+    }
+    
+    .search-box {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 🎯 MOBILE HEADER - RESET POSITIONING */
+    .nav-container {
+        flex-direction: column;
+        gap: var(--space-4);
+        padding: var(--space-4);
+        height: auto;
+        position: relative;
+    }
+    
+    .logo {
+        position: relative; /* Reset absolute positioning */
+        left: auto;
+        top: auto;
+        transform: none;
+        order: 1;
+    }
+    
+    .nav-links {
+        position: relative; /* Reset absolute positioning */
+        left: auto;
+        top: auto;
+        transform: none;
+        order: 2;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: var(--space-4);
+    }
+    
+    .header-controls {
+        position: relative; /* Reset absolute positioning */
+        right: auto;
+        top: auto;
+        transform: none;
+        order: 3;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .search-box {
+        min-width: 180px;
+        padding: var(--space-2) var(--space-3);
+    }
+    
+    .search-btn {
+        padding: var(--space-2);
+    }
+    
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-8);
+    }
+    
+    .hero-title {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+    }
+    
+    .search-container {
+        flex-direction: column;
+        gap: var(--space-2);
+        width: 100%;
+    }
+    
+    .search-box {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
 /* ========== UTILITY CLASSES ========== */
 .text-center { text-align: center; }
 .text-left { text-align: left; }
@@ -602,6 +825,16 @@ a:hover {
 
 .fade-in { opacity: 0; animation: fadeIn 0.5s ease forwards; }
 .slide-up { transform: translateY(20px); opacity: 0; animation: slideUp 0.5s ease forwards; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
 
 /* ========== ACCESSIBILITY ========== */
 .sr-only {
@@ -624,11 +857,32 @@ input:focus {
     outline-offset: 2px;
 }
 
+/* ========== DARK MODE SUPPORT ========== */
+[data-theme="dark"] .header {
+    background: rgba(15, 23, 42, 0.95);
+}
+
+[data-theme="dark"] .search-box {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(100, 116, 139, 0.3);
+}
+
+[data-theme="dark"] .theme-toggle {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+    background: var(--accent-color);
+}
+
 /* ========== PRINT STYLES ========== */
 @media print {
     .header,
     .loading-screen,
-    #particles-js {
+    #particles-js,
+    .theme-toggle,
+    .search-container {
         display: none;
     }
     

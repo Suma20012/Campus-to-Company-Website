@@ -118,14 +118,14 @@ class DarkModeController {
         }, 300);
     }
     
-    applyTheme() {
-        const theme = this.isDarkMode ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', theme);
-        
-        const icon = document.getElementById('theme-icon');
-        if (icon) {
-            icon.className = this.isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
-        }
+   applyTheme() {
+    const theme = this.isDarkMode ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    const icon = document.getElementById('theme-icon');
+    if (icon) {
+        icon.className = this.isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
+    }
         
         // Update meta theme-color for mobile browsers
         let themeColorMeta = document.querySelector('meta[name="theme-color"]');

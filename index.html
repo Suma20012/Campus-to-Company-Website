@@ -2,23 +2,173 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="msapplication-TileColor" content="#7c3aed">
+    <meta name="msapplication-config" content="browserconfig.xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campus to Company - Transform Your Career Journey</title>
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <!-- ENHANCED META TAGS -->
+    <meta name="description" content="Bridge the gap between campus and corporate world with industry-relevant courses and expert mentorship.">
+    <meta name="keywords" content="education, career, training, courses, campus, corporate, learning">
+    <meta name="author" content="Campus to Company">
     
-    <!-- External Libraries -->
+    <!-- OPEN GRAPH META TAGS -->
+    <meta property="og:title" content="Campus to Company - Transform Your Career Journey">
+    <meta property="og:description" content="Bridge the gap between campus and corporate world with industry-relevant courses.">
+    <meta property="og:image" content="assets/images/og-image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Campus to Company">
+    
+    <!-- TWITTER CARD META TAGS -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Campus to Company - Transform Your Career Journey">
+    <meta name="twitter:description" content="Bridge the gap between campus and corporate world with industry-relevant courses.">
+    <meta name="twitter:image" content="assets/images/twitter-card.jpg">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- PRELOAD CRITICAL RESOURCES -->
+    <link rel="preload" href="assets/css/variables.css" as="style">
+    <link rel="preload" href="assets/css/main.css" as="style">
+    <link rel="preload" href="assets/css/navbar.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    
+    <!-- EXTERNAL LIBRARIES -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="manifest" href="manifest.json"> 
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/animations.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/modern-effects.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- DNS PREFETCH FOR EXTERNAL RESOURCES -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+
+    <style>
+        /* Custom styles for the updates */
+        .hero-subtitle.bright {
+            color: #fff !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-weight: 500;
+        }
+        
+        .animated-elearning {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .elearning-animation {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .floating-icon:nth-child(1) { 
+            top: 20%; left: 15%; 
+            animation-delay: 0s;
+        }
+        .floating-icon:nth-child(2) { 
+            top: 60%; left: 80%; 
+            animation-delay: 1s;
+        }
+        .floating-icon:nth-child(3) { 
+            top: 80%; left: 20%; 
+            animation-delay: 2s;
+        }
+        .floating-icon:nth-child(4) { 
+            top: 30%; right: 10%; 
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .main-elearning-icon {
+            font-size: 4rem;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .partners-scroll {
+            display: flex;
+            overflow: hidden;
+            background: white;
+            padding: 20px 0;
+            white-space: nowrap;
+        }
+        
+        .partners-track {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+        
+        .partner-logo-img {
+            flex-shrink: 0;
+            margin: 0 40px;
+            height: 60px;
+            width: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .partner-logo-img:hover {
+            opacity: 1;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Adjust hero section for navbar */
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 2rem; /* Reduced from default */
+        }
+        
+        /* Reduce space between hero and partners */
+        .partners {
+            padding-top: 2rem; /* Reduced from default 4rem */
+            margin-top: -2rem; /* Negative margin to bring closer */
+        }
+    </style>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -29,29 +179,29 @@
     <!-- Particles Background -->
     <div id="particles-js"></div>
 
-    <!-- Header -->
-    <header class="header" id="header">
+    <!-- Header/Navbar -->
+    <header class="header">
         <div class="nav-container">
-            <div class="logo" onclick="scrollToSection('home')">
-                <i class="fas fa-graduation-cap"></i>
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
                 Campus To Company
-            </div>
+            </a>
             <nav>
-                <ul class="nav-links">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#about" class="nav-link">About Us</a></li>
-                    <li><a href="#courses" class="nav-link">Courses</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <div class="search-container">
-                <div class="search-box">
-                    <input type="text" placeholder="Enter your email to Search Course" id="searchInput">
-                    <i class="fas fa-search"></i>
+            <div class="nav-controls">
+                <div class="theme-toggle" onclick="toggleTheme()">
+                    <div class="theme-slider">
+                        <i class="fas fa-sun"></i>
+                    </div>
                 </div>
-                <button class="search-btn" onclick="performSearch()">
-                    <i class="fas fa-search"></i>
-                </button>
             </div>
         </div>
     </header>
@@ -60,32 +210,15 @@
     <section class="hero" id="home">
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge" data-aos="fade-right">
-                    <i class="fas fa-star"></i> #1 Learning Platform
-                </div>
                 <h1 class="hero-title" data-aos="fade-right" data-aos-delay="200">
                     Transform Your<br>
                     <span class="highlight typed-text" id="typedText">Career Journey</span>
                 </h1>
-                <p class="hero-subtitle" data-aos="fade-right" data-aos-delay="400">
+                <p class="hero-subtitle bright" data-aos="fade-right" data-aos-delay="300">
                     Bridge the gap between campus and corporate world. 
                     Master industry-relevant skills with expert-led courses 
                     and real-world projects.
                 </p>
-                <div class="stats-container" data-aos="fade-up" data-aos-delay="600">
-                    <div class="stat-item">
-                        <i class="fas fa-users"></i>
-                        <span class="counter" data-target="50000">0</span>K+ Students
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-book"></i>
-                        <span class="counter" data-target="200">0</span>+ Courses
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-chart-line"></i>
-                        <span class="counter" data-target="95">0</span>% Success Rate
-                    </div>
-                </div>
                 <div class="hero-buttons" data-aos="fade-up" data-aos-delay="800">
                     <a href="#courses" class="btn-primary">
                         <i class="fas fa-rocket"></i>
@@ -102,28 +235,26 @@
                 </div>
             </div>
             <div class="hero-image" data-aos="fade-left" data-aos-delay="400">
-                <div class="image-card">
-                    <div class="image-placeholder">
-                        <i class="fas fa-users fa-3x"></i><br>
-                        Students Learning Together
+                <div class="animated-elearning">
+                    <div class="floating-icon">
+                        <i class="fas fa-book-open"></i>
                     </div>
-                    <div class="floating-stats top-right">
-                        <div class="stat-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <div>
-                            <strong class="counter" data-target="2000">0</strong>+<br>
-                            <small>Online Courses</small>
-                        </div>
+                    <div class="floating-icon">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <div class="floating-stats bottom-left">
-                        <div class="stat-icon">
-                            <i class="fas fa-shield-alt"></i>
+                    <div class="floating-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="floating-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="elearning-animation">
+                        <div class="main-elearning-icon">
+                            <i class="fas fa-play-circle"></i>
                         </div>
-                        <div>
-                            <strong class="counter" data-target="95">0</strong>%<br>
-                            <small>Success Rate</small>
-                        </div>
+                        <p style="color: white; margin-top: 20px; font-size: 18px; text-align: center;">
+                            Interactive E-Learning Experience
+                        </p>
                     </div>
                 </div>
             </div>
@@ -134,12 +265,21 @@
     <section class="partners" data-aos="fade-up">
         <div class="partners-container">
             <h3>Trusted by our awesome partners</h3>
-            <div class="partners-grid">
-                <div class="partner-logo" data-aos="zoom-in" data-aos-delay="100">Sheshadripuram</div>
-                <div class="partner-logo" data-aos="zoom-in" data-aos-delay="200">KLE</div>
-                <div class="partner-logo" data-aos="zoom-in" data-aos-delay="300">Surana</div>
-                <div class="partner-logo" data-aos="zoom-in" data-aos-delay="400">Tumkur University</div>
-                <div class="partner-logo" data-aos="zoom-in" data-aos-delay="500">Varadaraja</div>
+            <div class="partners-scroll">
+                <div class="partners-track">
+                    <!-- College logos with placeholder images -->
+                    <img src="https://via.placeholder.com/120x60/7c3aed/white?text=Sheshadripuram" alt="Sheshadripuram College" class="partner-logo-img">
+                    <img src="https://via.placeholder.com/120x60/667eea/white?text=KLE" alt="KLE College" class="partner-logo-img">
+                    <img src="https://via.placeholder.com/120x60/764ba2/white?text=Surana" alt="Surana College" class="partner-logo-img">
+                    <img src="https://via.placeholder.com/120x60/f093fb/white?text=Tumkur+University" alt="Tumkur University" class="partner-logo-img">
+                    <img src="https://via.placeholder.com/120x60/38bdf8/white?text=Varadaraja" alt="Varadaraja College" class="partner-logo-img">
+                    <!-- Duplicate for seamless scrolling -->
+                    <img src="https://via.placeholder.com/120x60/7c3aed/white?text=Sheshadripuram" alt="Sheshadripuram College" class="partner-logo-img">
+                    <img src="https://via.placeholder.com/120x60/667eea/white?text=KLE" alt="KLE College" class="partner-logo-img">
+                    <img src="https://via.placeholder.com/120x60/764ba2/white?text=Surana" alt="Surana College" class="partner-logo-img">
+                    <img src="https://via.placeholder.com/120x60/f093fb/white?text=Tumkur+University" alt="Tumkur University" class="partner-logo-img">
+                    <img src="https://via.placeholder.com/120x60/38bdf8/white?text=Varadaraja" alt="Varadaraja College" class="partner-logo-img">
+                </div>
             </div>
         </div>
     </section>
@@ -188,7 +328,6 @@
                 <button class="filter-btn active" onclick="filterCourses('all')">All Courses</button>
                 <button class="filter-btn" onclick="filterCourses('technical')">Technical</button>
                 <button class="filter-btn" onclick="filterCourses('business')">Business</button>
-                <button class="filter-btn" onclick="filterCourses('creative')">Creative</button>
             </div>
             
             <div class="courses-grid" id="coursesGrid">
@@ -206,19 +345,19 @@
                     <h3>Business Analytics</h3>
                     <p>Learn business intelligence and strategic analysis for better decision making</p>
                 </div>
-                <div class="course-card business" data-aos="zoom-in" data-aos-delay="300" onclick="openCourseModal('Executive HR')">
-                    <div class="course-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Executive HR</h3>
-                    <p>Human resource management and leadership skills for modern organizations</p>
-                </div>
-                <div class="course-card creative" data-aos="zoom-in" data-aos-delay="400" onclick="openCourseModal('Digital Marketing')">
+                <div class="course-card business" data-aos="zoom-in" data-aos-delay="300" onclick="openCourseModal('Digital Marketing')">
                     <div class="course-icon">
                         <i class="fas fa-bullhorn"></i>
                     </div>
                     <h3>Digital Marketing</h3>
                     <p>Complete digital marketing strategy and execution across all platforms</p>
+                </div>
+                <div class="course-card business" data-aos="zoom-in" data-aos-delay="400" onclick="openCourseModal('Executive HR')">
+                    <div class="course-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Executive HR</h3>
+                    <p>Human resource management and leadership skills for modern organizations</p>
                 </div>
                 <div class="course-card technical" data-aos="zoom-in" data-aos-delay="500" onclick="openCourseModal('SQL')">
                     <div class="course-icon">
@@ -255,6 +394,123 @@
         </div>
     </section>
 
+    <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Floating Decorations -->
+        <div class="footer-decoration">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="footer-decoration">
+            <i class="fas fa-book"></i>
+        </div>
+        
+        <div class="footer-container">
+            <!-- Company Section -->
+            <div class="footer-company">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    Campus To Company
+                </div>
+                <p class="footer-description">
+                    Bridging the gap between campus and corporate world with industry-relevant courses, 
+                    expert mentorship, and real-world projects. Transform your career journey with us.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="#courses"><i class="fas fa-book-open"></i> Courses</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li><a href="#"><i class="fas fa-blog"></i> Blog</a></li>
+                    <li><a href="#"><i class="fas fa-certificate"></i> Certifications</a></li>
+                </ul>
+            </div>
+            
+            <!-- Course Categories -->
+            <div class="footer-section">
+                <h3>Popular Courses</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chart-bar"></i> Data Analytics</a></li>
+                    <li><a href="#"><i class="fas fa-briefcase"></i> Business Analytics</a></li>
+                    <li><a href="#"><i class="fas fa-bullhorn"></i> Digital Marketing</a></li>
+                    <li><a href="#"><i class="fab fa-python"></i> Python Programming</a></li>
+                    <li><a href="#"><i class="fas fa-database"></i> SQL Database</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Executive HR</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact & Newsletter -->
+            <div class="footer-section">
+                <h3>Get In Touch</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <span>Bangalore, Karnataka, India</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <span>+91 98765 43210</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <span>info@campustocompany.com</span>
+                </div>
+                
+                <div class="newsletter">
+                    <h4 style="color: white; margin-bottom: 0.5rem; font-size: 1rem;">Newsletter</h4>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 1rem;">
+                        Subscribe for updates and career tips
+                    </p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                &copy; 2024 Campus To Company. All rights reserved.
+            </div>
+            <div class="footer-links-bottom">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Support</a>
+            </div>
+        </div>
+    </footer>
+
     <!-- Modal -->
     <div id="demoModal" class="modal">
         <div class="modal-content">
@@ -273,6 +529,8 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/footer.js"></script>
     <script src="assets/js/particles-config.js"></script>
     <script src="assets/js/animations.js"></script>
     <script src="assets/js/navigation.js"></script>
@@ -280,5 +538,6 @@
     <script src="assets/js/counters.js"></script>
     <script src="assets/js/search.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
