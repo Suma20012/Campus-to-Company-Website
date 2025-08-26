@@ -665,59 +665,45 @@ a:hover {
 }
 
 /* ========== PARTNERS SECTION ========== */
-.partners {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    padding: var(--space-20) 0;
-    text-align: center;
-}
-
-.partners-container {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 var(--space-8);
-}
-
 .partners h3 {
-    color: var(--text-light);
-    margin-bottom: var(--space-12);
-    font-size: var(--text-lg);
-    font-weight: var(--font-medium);
+  font-size: 2.5rem;  /* Increase to desired size */
+  font-weight: 700;    /* Optional: make it bold */
+  text-align: center;  /* Ensure it stays centered */
+  margin-bottom: 1rem; /* Adjust spacing below */
+  color: var(--text-dark, #222); /* Optional: darker color */
 }
 
-.partners-grid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-12);
-    flex-wrap: wrap;
+
+.partner-logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 50px; /* Increase horizontal space between logos */
+  min-width: 160px;
 }
 
-.partner-logo {
-    height: 50px;
-    opacity: 0.6;
-    transition: var(--transition-all);
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    padding: var(--space-4) var(--space-6);
-    border-radius: var(--radius-xl);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--text-base);
-    color: var(--text-light);
-    font-weight: var(--font-semibold);
-    border: 1px solid rgba(124, 58, 237, 0.1);
+.partner-logo-img {
+  height: 120px;  /* Increase logo height further */
+  width: auto;    /* Maintain aspect ratio */
+  opacity: 0.85;
+  margin-bottom: 14px; /* Space between logo and text */
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.partner-logo:hover {
-    opacity: 1;
-    transform: translateY(-5px);
-    background: var(--white);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    box-shadow: var(--shadow-primary);
+.partner-logo-img:hover {
+  opacity: 1;
+  transform: translateY(-5px);
 }
+
+.logo-title {
+  font-size: 1.5rem;  /* Increase font size */
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+
 
 /* ========== RESPONSIVE DESIGN - HEADER FIXES ========== */
 @media (max-width: 1024px) {

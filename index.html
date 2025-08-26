@@ -30,12 +30,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
 
     <!-- PRELOAD CRITICAL RESOURCES -->
     <link rel="preload" href="assets/css/variables.css" as="style">
     <link rel="preload" href="assets/css/main.css" as="style">
-    <link rel="preload" href="assets/css/navbar.css" as="style">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
     
     <!-- EXTERNAL LIBRARIES -->
@@ -44,19 +42,18 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-    <link rel="manifest" href="manifest.json"> 
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico"> 
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/variables.css">
-    <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/animations.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/modern-effects.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/courses.css">
+    <link rel="stylesheet" href="assets/css/course-details.css">
 
     <!-- DNS PREFETCH FOR EXTERNAL RESOURCES -->
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
@@ -266,27 +263,36 @@
     </section>
 
     <!-- Trusted Partners -->
-    <section class="partners" data-aos="fade-up">
-        <div class="partners-container">
-            <h3>Trusted by our awesome partners</h3>
-            <div class="partners-scroll">
-                <div class="partners-track">
-                    <!-- College logos with placeholder images -->
-                    <img src="https://via.placeholder.com/120x60/7c3aed/white?text=Sheshadripuram" alt="Sheshadripuram College" class="partner-logo-img">
-                    <img src="https://via.placeholder.com/120x60/667eea/white?text=KLE" alt="KLE College" class="partner-logo-img">
-                    <img src="https://via.placeholder.com/120x60/764ba2/white?text=Surana" alt="Surana College" class="partner-logo-img">
-                    <img src="https://via.placeholder.com/120x60/f093fb/white?text=Tumkur+University" alt="Tumkur University" class="partner-logo-img">
-                    <img src="https://via.placeholder.com/120x60/38bdf8/white?text=Varadaraja" alt="Varadaraja College" class="partner-logo-img">
-                    <!-- Duplicate for seamless scrolling -->
-                    <img src="https://via.placeholder.com/120x60/7c3aed/white?text=Sheshadripuram" alt="Sheshadripuram College" class="partner-logo-img">
-                    <img src="https://via.placeholder.com/120x60/667eea/white?text=KLE" alt="KLE College" class="partner-logo-img">
-                    <img src="https://via.placeholder.com/120x60/764ba2/white?text=Surana" alt="Surana College" class="partner-logo-img">
-                    <img src="https://via.placeholder.com/120x60/f093fb/white?text=Tumkur+University" alt="Tumkur University" class="partner-logo-img">
-                    <img src="https://via.placeholder.com/120x60/38bdf8/white?text=Varadaraja" alt="Varadaraja College" class="partner-logo-img">
-                </div>
-            </div>
+<section class="partners" data-aos="fade-up">
+  <div class="partners-container">
+    <h3>Trusted by our awesome partners</h3>
+    <div class="partners-scroll">
+      <div class="partners-track">
+        <!-- College logos with names below -->
+        <div class="partner-logo-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCXEPe41FgTr6XRryE5XwECi5NuF0SYoQ7zw&s" alt="Sheshadripuram College" class="partner-logo-img">
+          <div class="logo-title">Sheshadripuram College</div>
         </div>
-    </section>
+        <div class="partner-logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/KLE_logo.jpg/1200px-KLE_logo.jpg" alt="KLE College" class="partner-logo-img">
+          <div class="logo-title">KLE College</div>
+        </div>
+        <div class="partner-logo-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6brXcvfvmmcM5KfKXGR1aSSj4qUteSl5O2g&s" alt="Surana College" class="partner-logo-img">
+          <div class="logo-title">Surana College</div>
+        </div>
+        <div class="partner-logo-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRccxppBxImGlLLxQfeRTcR8Vzxu6JLhKk_-A&s" alt="Tumkur University" class="partner-logo-img">
+          <div class="logo-title">Tumkur University</div>
+        </div>
+        <div class="partner-logo-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxTcrc4g9FRqj1aXb2PEhBkgMkfRjuLzmcpw&s" alt="Varadaraja College" class="partner-logo-img">
+          <div class="logo-title">Varadaraja College</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- About Section -->
     <section class="about" id="about">
@@ -323,80 +329,460 @@
     </section>
 
     <!-- Courses Section -->
-    <section class="courses" id="courses">
-        <div class="courses-container">
-            <h2 data-aos="fade-up">Choose favorite course</h2>
-            <p class="subtitle" data-aos="fade-up" data-aos-delay="100">from Top categories</p>
-            
-            <div class="courses-filter" data-aos="fade-up" data-aos-delay="200">
-                <button class="filter-btn active" onclick="filterCourses('all')">All Courses</button>
-                <button class="filter-btn" onclick="filterCourses('technical')">Technical</button>
-                <button class="filter-btn" onclick="filterCourses('business')">Business</button>
-            </div>
-            
-            <div class="courses-grid" id="coursesGrid">
-                <div class="course-card technical" data-aos="zoom-in" data-aos-delay="100" onclick="openCourseModal('Data Analytics')">
-                    <div class="course-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3>Data Analytics</h3>
-                    <p>Master data analysis and visualization techniques with real-world projects</p>
+    <!-- ENHANCED COURSES SECTION - Replace your existing courses section with this -->
+<!-- File: This HTML should replace your existing courses section in index.html -->
+
+<!-- Course Hero Banner Section -->
+<section class="courses-hero" id="courses">
+    <div class="courses-hero-container">
+        <div class="courses-hero-content">
+            <h1 class="courses-hero-title">Campus to Company – Learn, Build, Get Placed</h1>
+            <p class="courses-hero-tagline">Transform your academic knowledge into job-ready skills.</p>
+            <div class="courses-hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Students Placed</span>
                 </div>
-                <div class="course-card business" data-aos="zoom-in" data-aos-delay="200" onclick="openCourseModal('Business Analytics')">
-                    <div class="course-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3>Business Analytics</h3>
-                    <p>Learn business intelligence and strategic analysis for better decision making</p>
+                <div class="hero-stat">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Success Rate</span>
                 </div>
-                <div class="course-card business" data-aos="zoom-in" data-aos-delay="300" onclick="openCourseModal('Digital Marketing')">
-                    <div class="course-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>Digital Marketing</h3>
-                    <p>Complete digital marketing strategy and execution across all platforms</p>
-                </div>
-                <div class="course-card business" data-aos="zoom-in" data-aos-delay="400" onclick="openCourseModal('Executive HR')">
-                    <div class="course-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Executive HR</h3>
-                    <p>Human resource management and leadership skills for modern organizations</p>
-                </div>
-                <div class="course-card technical" data-aos="zoom-in" data-aos-delay="500" onclick="openCourseModal('SQL')">
-                    <div class="course-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>SQL</h3>
-                    <p>Database management and query optimization for data professionals</p>
-                </div>
-                <div class="course-card technical" data-aos="zoom-in" data-aos-delay="600" onclick="openCourseModal('Python')">
-                    <div class="course-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3>Python</h3>
-                    <p>Programming fundamentals to advanced applications in various domains</p>
-                </div>
-                <div class="course-card business" data-aos="zoom-in" data-aos-delay="700" onclick="openCourseModal('Finance')">
-                    <div class="course-icon">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <h3>Finance</h3>
-                    <p>Financial analysis and investment strategies for corporate finance</p>
-                </div>
-                <div class="course-card technical" data-aos="zoom-in" data-aos-delay="800" onclick="openCourseModal('Tally ERP')">
-                    <div class="course-icon">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <h3>Tally ERP</h3>
-                    <p>Accounting software mastery and business processes automation</p>
+                <div class="hero-stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Partner Companies</span>
                 </div>
             </div>
-            <a href="#explore" class="explore-more" data-aos="fade-up" data-aos-delay="900">
-                More to explore <i class="fas fa-arrow-right"></i>
-            </a>
         </div>
-    </section>
+        <div class="courses-hero-image">
+            <div class="hero-video-placeholder">
+                <i class="fas fa-play-circle"></i>
+                <span>Watch Our Success Stories</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Courses Grid Section -->
+<section class="courses-grid-section">
+    <div class="courses-container">
+        <div class="section-header">
+            <h2>Choose Your Career Path</h2>
+            <p>Industry-relevant courses designed for real-world success</p>
+        </div>
+        
+        <div class="courses-grid">
+            <!-- Course Card 1 - Data Analyst -->
+            <div class="course-card" data-course="data-analyst">
+                <div class="course-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="Data Analyst Course" loading="lazy">
+                    <div class="course-badge">Featured</div>
+                    <div class="course-level">Beginner to Advanced</div>
+                </div>
+                <div class="course-content">
+                    <div class="course-category">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Data & Analytics</span>
+                    </div>
+                    <h3 class="course-title">Data Analyst Mastery</h3>
+                    <p class="course-description">Master data analysis with Python, SQL, and advanced visualization tools. Learn to extract insights from complex datasets and make data-driven decisions.</p>
+                    
+                    <div class="course-meta">
+                        <div class="course-duration">
+                            <i class="fas fa-clock"></i>
+                            <span>12 Weeks</span>
+                        </div>
+                        <div class="course-projects">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>8 Projects</span>
+                        </div>
+                        <div class="course-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.8 (234 reviews)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-highlights">
+                        <span class="highlight-tag">Python</span>
+                        <span class="highlight-tag">SQL</span>
+                        <span class="highlight-tag">Tableau</span>
+                        <span class="highlight-tag">Excel</span>
+                    </div>
+                    
+                    <div class="course-actions">
+                        <button class="btn-know-more" onclick="openCourseDetails('data-analyst')">
+                            <i class="fas fa-info-circle"></i>
+                            Know More
+                        </button>
+                        <button class="btn-join-now" onclick="enrollInCourse('data-analyst')">
+                            <i class="fas fa-rocket"></i>
+                            Join Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 2 - Python Programming -->
+            <div class="course-card" data-course="python-programming">
+                <div class="course-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1526379879527-8559ecfcaec0?w=400&h=250&fit=crop" alt="Python Programming Course" loading="lazy">
+                    <div class="course-badge">Popular</div>
+                    <div class="course-level">Beginner Friendly</div>
+                </div>
+                <div class="course-content">
+                    <div class="course-category">
+                        <i class="fas fa-code"></i>
+                        <span>Programming</span>
+                    </div>
+                    <h3 class="course-title">Python Programming Pro</h3>
+                    <p class="course-description">From basics to advanced Python development. Build web applications, automate tasks, and develop scalable solutions using Python frameworks.</p>
+                    
+                    <div class="course-meta">
+                        <div class="course-duration">
+                            <i class="fas fa-clock"></i>
+                            <span>16 Weeks</span>
+                        </div>
+                        <div class="course-projects">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>12 Projects</span>
+                        </div>
+                        <div class="course-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.9 (456 reviews)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-highlights">
+                        <span class="highlight-tag">Django</span>
+                        <span class="highlight-tag">Flask</span>
+                        <span class="highlight-tag">APIs</span>
+                        <span class="highlight-tag">Database</span>
+                    </div>
+                    
+                    <div class="course-actions">
+                        <button class="btn-know-more" onclick="openCourseDetails('python-programming')">
+                            <i class="fas fa-info-circle"></i>
+                            Know More
+                        </button>
+                        <button class="btn-join-now" onclick="enrollInCourse('python-programming')">
+                            <i class="fas fa-rocket"></i>
+                            Join Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 3 - Digital Marketing -->
+            <div class="course-card" data-course="digital-marketing">
+                <div class="course-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop" alt="Digital Marketing Course" loading="lazy">
+                    <div class="course-badge">Trending</div>
+                    <div class="course-level">Intermediate</div>
+                </div>
+                <div class="course-content">
+                    <div class="course-category">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Marketing</span>
+                    </div>
+                    <h3 class="course-title">Digital Marketing Expert</h3>
+                    <p class="course-description">Master modern digital marketing strategies including SEO, social media marketing, PPC campaigns, and analytics to drive business growth.</p>
+                    
+                    <div class="course-meta">
+                        <div class="course-duration">
+                            <i class="fas fa-clock"></i>
+                            <span>10 Weeks</span>
+                        </div>
+                        <div class="course-projects">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>6 Campaigns</span>
+                        </div>
+                        <div class="course-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.7 (189 reviews)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-highlights">
+                        <span class="highlight-tag">SEO</span>
+                        <span class="highlight-tag">Google Ads</span>
+                        <span class="highlight-tag">Social Media</span>
+                        <span class="highlight-tag">Analytics</span>
+                    </div>
+                    
+                    <div class="course-actions">
+                        <button class="btn-know-more" onclick="openCourseDetails('digital-marketing')">
+                            <i class="fas fa-info-circle"></i>
+                            Know More
+                        </button>
+                        <button class="btn-join-now" onclick="enrollInCourse('digital-marketing')">
+                            <i class="fas fa-rocket"></i>
+                            Join Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 4 - Web Development -->
+            <div class="course-card" data-course="web-development">
+                <div class="course-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=250&fit=crop" alt="Web Development Course" loading="lazy">
+                    <div class="course-badge">Hot</div>
+                    <div class="course-level">Beginner to Pro</div>
+                </div>
+                <div class="course-content">
+                    <div class="course-category">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>Development</span>
+                    </div>
+                    <h3 class="course-title">Full Stack Web Development</h3>
+                    <p class="course-description">Build modern web applications from scratch. Learn front-end and back-end technologies to become a complete web developer.</p>
+                    
+                    <div class="course-meta">
+                        <div class="course-duration">
+                            <i class="fas fa-clock"></i>
+                            <span>20 Weeks</span>
+                        </div>
+                        <div class="course-projects">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>15 Projects</span>
+                        </div>
+                        <div class="course-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.9 (678 reviews)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-highlights">
+                        <span class="highlight-tag">React</span>
+                        <span class="highlight-tag">Node.js</span>
+                        <span class="highlight-tag">MongoDB</span>
+                        <span class="highlight-tag">AWS</span>
+                    </div>
+                    
+                    <div class="course-actions">
+                        <button class="btn-know-more" onclick="openCourseDetails('web-development')">
+                            <i class="fas fa-info-circle"></i>
+                            Know More
+                        </button>
+                        <button class="btn-join-now" onclick="enrollInCourse('web-development')">
+                            <i class="fas fa-rocket"></i>
+                            Join Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 5 - AI & Machine Learning -->
+            <div class="course-card" data-course="ai-machine-learning">
+                <div class="course-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=250&fit=crop" alt="AI & ML Course" loading="lazy">
+                    <div class="course-badge">Advanced</div>
+                    <div class="course-level">Intermediate to Expert</div>
+                </div>
+                <div class="course-content">
+                    <div class="course-category">
+                        <i class="fas fa-robot"></i>
+                        <span>Artificial Intelligence</span>
+                    </div>
+                    <h3 class="course-title">AI & Machine Learning</h3>
+                    <p class="course-description">Dive into artificial intelligence and machine learning. Build intelligent systems and predictive models using cutting-edge technologies.</p>
+                    
+                    <div class="course-meta">
+                        <div class="course-duration">
+                            <i class="fas fa-clock"></i>
+                            <span>18 Weeks</span>
+                        </div>
+                        <div class="course-projects">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>10 Models</span>
+                        </div>
+                        <div class="course-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.8 (312 reviews)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-highlights">
+                        <span class="highlight-tag">TensorFlow</span>
+                        <span class="highlight-tag">PyTorch</span>
+                        <span class="highlight-tag">Deep Learning</span>
+                        <span class="highlight-tag">NLP</span>
+                    </div>
+                    
+                    <div class="course-actions">
+                        <button class="btn-know-more" onclick="openCourseDetails('ai-machine-learning')">
+                            <i class="fas fa-info-circle"></i>
+                            Know More
+                        </button>
+                        <button class="btn-join-now" onclick="enrollInCourse('ai-machine-learning')">
+                            <i class="fas fa-rocket"></i>
+                            Join Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 6 - UI/UX Design -->
+            <div class="course-card" data-course="ui-ux-design">
+                <div class="course-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=250&fit=crop" alt="UI/UX Design Course" loading="lazy">
+                    <div class="course-badge">Creative</div>
+                    <div class="course-level">Beginner to Advanced</div>
+                </div>
+                <div class="course-content">
+                    <div class="course-category">
+                        <i class="fas fa-paint-brush"></i>
+                        <span>Design</span>
+                    </div>
+                    <h3 class="course-title">UI/UX Design Mastery</h3>
+                    <p class="course-description">Create stunning user interfaces and exceptional user experiences. Learn design thinking, prototyping, and modern design tools.</p>
+                    
+                    <div class="course-meta">
+                        <div class="course-duration">
+                            <i class="fas fa-clock"></i>
+                            <span>14 Weeks</span>
+                        </div>
+                        <div class="course-projects">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>12 Designs</span>
+                        </div>
+                        <div class="course-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.9 (278 reviews)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-highlights">
+                        <span class="highlight-tag">Figma</span>
+                        <span class="highlight-tag">Adobe XD</span>
+                        <span class="highlight-tag">Prototyping</span>
+                        <span class="highlight-tag">User Research</span>
+                    </div>
+                    
+                    <div class="course-actions">
+                        <button class="btn-know-more" onclick="openCourseDetails('ui-ux-design')">
+                            <i class="fas fa-info-circle"></i>
+                            Know More
+                        </button>
+                        <button class="btn-join-now" onclick="enrollInCourse('ui-ux-design')">
+                            <i class="fas fa-rocket"></i>
+                            Join Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Course Details Modal -->
+<div class="course-details-modal" id="courseDetailsModal">
+    <div class="modal-overlay" onclick="closeCourseDetails()"></div>
+    <div class="course-details-container">
+        <button class="close-modal" onclick="closeCourseDetails()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="course-details-content" id="courseDetailsContent">
+            <!-- Dynamic content will be loaded here -->
+        </div>
+    </div>
+</div>
+
+<!-- Enrollment Modal -->
+<div class="enrollment-modal" id="enrollmentModal">
+    <div class="modal-overlay" onclick="closeEnrollmentModal()"></div>
+    <div class="enrollment-container">
+        <button class="close-modal" onclick="closeEnrollmentModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="enrollment-content">
+            <div class="enrollment-header">
+                <h2>Enroll in <span id="enrollmentCourseTitle">Course</span></h2>
+                <p>Limited seats available - Secure your spot today!</p>
+            </div>
+            
+            <form class="enrollment-form" id="enrollmentForm">
+                <div class="form-group">
+                    <label for="studentName">Full Name *</label>
+                    <input type="text" id="studentName" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentEmail">Email Address *</label>
+                    <input type="email" id="studentEmail" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentPhone">Phone Number *</label>
+                    <input type="tel" id="studentPhone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentCollege">College/Organization *</label>
+                    <input type="text" id="studentCollege" name="college" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentExperience">Current Experience Level</label>
+                    <select id="studentExperience" name="experience">
+                        <option value="beginner">Complete Beginner</option>
+                        <option value="some-knowledge">Some Knowledge</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                
+                <div class="enrollment-pricing">
+                    <div class="price-breakdown">
+                        <div class="price-item">
+                            <span>Course Fee:</span>
+                            <span id="coursePrice">₹15,000</span>
+                        </div>
+                        <div class="price-item discount">
+                            <span>Early Bird Discount:</span>
+                            <span>-₹3,000</span>
+                        </div>
+                        <div class="price-item total">
+                            <span>Total Amount:</span>
+                            <span id="totalPrice">₹12,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-options">
+                    <h4>Choose Payment Method:</h4>
+                    <div class="payment-methods">
+                        <label class="payment-method">
+                            <input type="radio" name="payment" value="full" checked>
+                            <span class="payment-label">
+                                <strong>Pay Full Amount</strong>
+                                <small>Get additional 5% discount</small>
+                            </span>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="payment" value="installment">
+                            <span class="payment-label">
+                                <strong>Pay in Installments</strong>
+                                <small>2 EMIs of ₹6,500 each</small>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-enroll-submit">
+                    <i class="fas fa-credit-card"></i>
+                    Proceed to Payment
+                </button>
+                
+                <div class="secure-payment-notice">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure payment powered by Razorpay</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
     <!-- Footer Section -->
     <footer class="footer">
@@ -532,16 +918,15 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/navigation.js"></script>
     <script src="assets/js/footer.js"></script>
     <script src="assets/js/particles-config.js"></script>
     <script src="assets/js/animations.js"></script>
-    <script src="assets/js/navigation.js"></script>
     <script src="assets/js/modal.js"></script>
     <script src="assets/js/counters.js"></script>
     <script src="assets/js/search.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/script.js"></script>
     <script src="assets/js/enhanced-effects.js"></script>
+    <script src="assets/js/courses.js"></script>
 </body>
 </html>
