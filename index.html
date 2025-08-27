@@ -53,8 +53,7 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/modern-effects.css">
     <link rel="stylesheet" href="assets/css/courses.css">
-    <link rel="stylesheet" href="assets/css/course-details.css">
-
+   <link rel="stylesheet" href="assets/css/course-details.css">
     <!-- DNS PREFETCH FOR EXTERNAL RESOURCES -->
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -331,6 +330,7 @@
     <!-- Courses Section -->
     <!-- ENHANCED COURSES SECTION - Replace your existing courses section with this -->
 <!-- File: This HTML should replace your existing courses section in index.html -->
+ 
 
 <!-- Course Hero Banner Section -->
 <section class="courses-hero" id="courses">
@@ -371,19 +371,18 @@
         </div>
         
         <div class="courses-grid">
-            <!-- Course Card 1 - Data Analyst -->
-            <div class="course-card" data-course="data-analyst">
+            <!-- Course Card 1 - Data Analytics (Technical) -->
+            <div class="course-card" data-course="data-analytics" data-category="technical">
                 <div class="course-thumbnail">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="Data Analyst Course" loading="lazy">
-                    <div class="course-badge">Featured</div>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="Data Analytics Course" loading="lazy">
                     <div class="course-level">Beginner to Advanced</div>
                 </div>
                 <div class="course-content">
                     <div class="course-category">
                         <i class="fas fa-chart-bar"></i>
-                        <span>Data & Analytics</span>
+                        <span>Data Analytics</span>
                     </div>
-                    <h3 class="course-title">Data Analyst Mastery</h3>
+                    <h3 class="course-title">Data Analytics</h3>
                     <p class="course-description">Master data analysis with Python, SQL, and advanced visualization tools. Learn to extract insights from complex datasets and make data-driven decisions.</p>
                     
                     <div class="course-meta">
@@ -409,11 +408,11 @@
                     </div>
                     
                     <div class="course-actions">
-                        <button class="btn-know-more" onclick="openCourseDetails('data-analyst')">
+                        <button class="btn-know-more" onclick="openCourseDetails('data-analytics')">
                             <i class="fas fa-info-circle"></i>
                             Know More
                         </button>
-                        <button class="btn-join-now" onclick="enrollInCourse('data-analyst')">
+                        <button class="btn-join-now" onclick="enrollInCourse('data-analytics')">
                             <i class="fas fa-rocket"></i>
                             Join Now
                         </button>
@@ -421,11 +420,10 @@
                 </div>
             </div>
 
-            <!-- Course Card 2 - Python Programming -->
-            <div class="course-card" data-course="python-programming">
+            <!-- Course Card 2 - Python Programming (Technical) -->
+            <div class="course-card" data-course="python-programming" data-category="technical">
                 <div class="course-thumbnail">
                     <img src="https://images.unsplash.com/photo-1526379879527-8559ecfcaec0?w=400&h=250&fit=crop" alt="Python Programming Course" loading="lazy">
-                    <div class="course-badge">Popular</div>
                     <div class="course-level">Beginner Friendly</div>
                 </div>
                 <div class="course-content">
@@ -433,7 +431,7 @@
                         <i class="fas fa-code"></i>
                         <span>Programming</span>
                     </div>
-                    <h3 class="course-title">Python Programming Pro</h3>
+                    <h3 class="course-title">Python Programming </h3>
                     <p class="course-description">From basics to advanced Python development. Build web applications, automate tasks, and develop scalable solutions using Python frameworks.</p>
                     
                     <div class="course-meta">
@@ -459,7 +457,7 @@
                     </div>
                     
                     <div class="course-actions">
-                        <button class="btn-know-more" onclick="openCourseDetails('python-programming')">
+                        <button class="btn-know-more" onclick="openCourseDetails('jango-programming')">
                             <i class="fas fa-info-circle"></i>
                             Know More
                         </button>
@@ -471,19 +469,18 @@
                 </div>
             </div>
 
-            <!-- Course Card 3 - Digital Marketing -->
-            <div class="course-card" data-course="digital-marketing">
+            <!-- Course Card 3 - Digital Marketing (Business) -->
+            <div class="course-card" data-course="digital-marketing" data-category="business">
                 <div class="course-thumbnail">
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop" alt="Digital Marketing Course" loading="lazy">
-                    <div class="course-badge">Trending</div>
-                    <div class="course-level">Intermediate</div>
+                    <div class="course-level">Advanced</div>
                 </div>
                 <div class="course-content">
                     <div class="course-category">
                         <i class="fas fa-bullhorn"></i>
                         <span>Marketing</span>
                     </div>
-                    <h3 class="course-title">Digital Marketing Expert</h3>
+                    <h3 class="course-title">Digital Marketing </h3>
                     <p class="course-description">Master modern digital marketing strategies including SEO, social media marketing, PPC campaigns, and analytics to drive business growth.</p>
                     
                     <div class="course-meta">
@@ -504,6 +501,7 @@
                     <div class="course-highlights">
                         <span class="highlight-tag">SEO</span>
                         <span class="highlight-tag">Google Ads</span>
+                        <span class="highlight-tag">Meta Ads</span>
                         <span class="highlight-tag">Social Media</span>
                         <span class="highlight-tag">Analytics</span>
                     </div>
@@ -521,49 +519,48 @@
                 </div>
             </div>
 
-            <!-- Course Card 4 - Web Development -->
-            <div class="course-card" data-course="web-development">
+            <!-- Course Card 4 - Tally-ERP (Business) -->
+            <div class="course-card" data-course="tally-erp" data-category="business">
                 <div class="course-thumbnail">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=250&fit=crop" alt="Web Development Course" loading="lazy">
-                    <div class="course-badge">Hot</div>
-                    <div class="course-level">Beginner to Pro</div>
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=250&fit=crop" alt="Tally-ERP Course" loading="lazy">
+                    <div class="course-level">Beginner Friendly</div>
                 </div>
                 <div class="course-content">
                     <div class="course-category">
-                        <i class="fas fa-laptop-code"></i>
-                        <span>Development</span>
+                        <i class="fas fa-calculator"></i>
+                        <span>Accounting</span>
                     </div>
-                    <h3 class="course-title">Full Stack Web Development</h3>
-                    <p class="course-description">Build modern web applications from scratch. Learn front-end and back-end technologies to become a complete web developer.</p>
+                    <h3 class="course-title">Tally-ERP</h3>
+                    <p class="course-description">Master financial accounting and inventory management with Tally ERP 9 software. Learn GST compliance and business financial processes.</p>
                     
                     <div class="course-meta">
                         <div class="course-duration">
                             <i class="fas fa-clock"></i>
-                            <span>20 Weeks</span>
+                            <span>6 Weeks</span>
                         </div>
                         <div class="course-projects">
                             <i class="fas fa-project-diagram"></i>
-                            <span>15 Projects</span>
+                            <span>5 Projects</span>
                         </div>
                         <div class="course-rating">
                             <i class="fas fa-star"></i>
-                            <span>4.9 (678 reviews)</span>
+                            <span>4.6 (145 reviews)</span>
                         </div>
                     </div>
                     
                     <div class="course-highlights">
-                        <span class="highlight-tag">React</span>
-                        <span class="highlight-tag">Node.js</span>
-                        <span class="highlight-tag">MongoDB</span>
-                        <span class="highlight-tag">AWS</span>
+                        <span class="highlight-tag">GST</span>
+                        <span class="highlight-tag">Accounting</span>
+                        <span class="highlight-tag">Inventory</span>
+                        <span class="highlight-tag">Payroll</span>
                     </div>
                     
                     <div class="course-actions">
-                        <button class="btn-know-more" onclick="openCourseDetails('web-development')">
+                        <button class="btn-know-more" onclick="openCourseDetails('tally-erp')">
                             <i class="fas fa-info-circle"></i>
                             Know More
                         </button>
-                        <button class="btn-join-now" onclick="enrollInCourse('web-development')">
+                        <button class="btn-join-now" onclick="enrollInCourse('tally-erp')">
                             <i class="fas fa-rocket"></i>
                             Join Now
                         </button>
@@ -571,29 +568,28 @@
                 </div>
             </div>
 
-            <!-- Course Card 5 - AI & Machine Learning -->
-            <div class="course-card" data-course="ai-machine-learning">
+            <!-- Course Card 5 - SQL (Technical) -->
+            <div class="course-card" data-course="sql" data-category="technical">
                 <div class="course-thumbnail">
-                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=250&fit=crop" alt="AI & ML Course" loading="lazy">
-                    <div class="course-badge">Advanced</div>
-                    <div class="course-level">Intermediate to Expert</div>
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=250&fit=crop" alt="SQL Course" loading="lazy">
+                    <div class="course-level">Intermediate</div>
                 </div>
                 <div class="course-content">
                     <div class="course-category">
-                        <i class="fas fa-robot"></i>
-                        <span>Artificial Intelligence</span>
+                        <i class="fas fa-database"></i>
+                        <span>Database</span>
                     </div>
-                    <h3 class="course-title">AI & Machine Learning</h3>
-                    <p class="course-description">Dive into artificial intelligence and machine learning. Build intelligent systems and predictive models using cutting-edge technologies.</p>
+                    <h3 class="course-title">SQL Database</h3>
+                    <p class="course-description">Master SQL for database management, queries, and data manipulation. Essential skill for data analysis and backend development.</p>
                     
                     <div class="course-meta">
                         <div class="course-duration">
                             <i class="fas fa-clock"></i>
-                            <span>18 Weeks</span>
+                            <span>6 Weeks</span>
                         </div>
                         <div class="course-projects">
                             <i class="fas fa-project-diagram"></i>
-                            <span>10 Models</span>
+                            <span>4 Projects</span>
                         </div>
                         <div class="course-rating">
                             <i class="fas fa-star"></i>
@@ -602,18 +598,18 @@
                     </div>
                     
                     <div class="course-highlights">
-                        <span class="highlight-tag">TensorFlow</span>
-                        <span class="highlight-tag">PyTorch</span>
-                        <span class="highlight-tag">Deep Learning</span>
-                        <span class="highlight-tag">NLP</span>
+                        <span class="highlight-tag">MySQL</span>
+                        <span class="highlight-tag">PostgreSQL</span>
+                        <span class="highlight-tag">Queries</span>
+                        <span class="highlight-tag">Optimization</span>
                     </div>
                     
                     <div class="course-actions">
-                        <button class="btn-know-more" onclick="openCourseDetails('ai-machine-learning')">
+                        <button class="btn-know-more" onclick="openCourseDetails('sql')">
                             <i class="fas fa-info-circle"></i>
                             Know More
                         </button>
-                        <button class="btn-join-now" onclick="enrollInCourse('ai-machine-learning')">
+                        <button class="btn-join-now" onclick="enrollInCourse('sql')">
                             <i class="fas fa-rocket"></i>
                             Join Now
                         </button>
@@ -621,49 +617,48 @@
                 </div>
             </div>
 
-            <!-- Course Card 6 - UI/UX Design -->
-            <div class="course-card" data-course="ui-ux-design">
+            <!-- Course Card 6 - HR (Business) -->
+            <div class="course-card" data-course="hr" data-category="business">
                 <div class="course-thumbnail">
-                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=250&fit=crop" alt="UI/UX Design Course" loading="lazy">
-                    <div class="course-badge">Creative</div>
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=250&fit=crop" alt="HR Course" loading="lazy">
                     <div class="course-level">Beginner to Advanced</div>
                 </div>
                 <div class="course-content">
                     <div class="course-category">
-                        <i class="fas fa-paint-brush"></i>
-                        <span>Design</span>
+                        <i class="fas fa-users"></i>
+                        <span>Human Resource</span>
                     </div>
-                    <h3 class="course-title">UI/UX Design Mastery</h3>
-                    <p class="course-description">Create stunning user interfaces and exceptional user experiences. Learn design thinking, prototyping, and modern design tools.</p>
+                    <h3 class="course-title">Human Resource Management</h3>
+                    <p class="course-description">Comprehensive HR management course covering recruitment, training, performance management, and employee relations for modern organizations.</p>
                     
                     <div class="course-meta">
                         <div class="course-duration">
                             <i class="fas fa-clock"></i>
-                            <span>14 Weeks</span>
+                            <span>8 Weeks</span>
                         </div>
                         <div class="course-projects">
                             <i class="fas fa-project-diagram"></i>
-                            <span>12 Designs</span>
+                            <span>6 Case Studies</span>
                         </div>
                         <div class="course-rating">
                             <i class="fas fa-star"></i>
-                            <span>4.9 (278 reviews)</span>
+                            <span>4.7 (278 reviews)</span>
                         </div>
                     </div>
                     
                     <div class="course-highlights">
-                        <span class="highlight-tag">Figma</span>
-                        <span class="highlight-tag">Adobe XD</span>
-                        <span class="highlight-tag">Prototyping</span>
-                        <span class="highlight-tag">User Research</span>
+                        <span class="highlight-tag">Recruitment</span>
+                        <span class="highlight-tag">Performance</span>
+                        <span class="highlight-tag">Training</span>
+                        <span class="highlight-tag">Leadership</span>
                     </div>
                     
                     <div class="course-actions">
-                        <button class="btn-know-more" onclick="openCourseDetails('ui-ux-design')">
+                        <button class="btn-know-more" onclick="openCourseDetails('hr')">
                             <i class="fas fa-info-circle"></i>
                             Know More
                         </button>
-                        <button class="btn-join-now" onclick="enrollInCourse('ui-ux-design')">
+                        <button class="btn-join-now" onclick="enrollInCourse('hr')">
                             <i class="fas fa-rocket"></i>
                             Join Now
                         </button>
@@ -673,116 +668,6 @@
         </div>
     </div>
 </section>
-
-<!-- Course Details Modal -->
-<div class="course-details-modal" id="courseDetailsModal">
-    <div class="modal-overlay" onclick="closeCourseDetails()"></div>
-    <div class="course-details-container">
-        <button class="close-modal" onclick="closeCourseDetails()">
-            <i class="fas fa-times"></i>
-        </button>
-        
-        <div class="course-details-content" id="courseDetailsContent">
-            <!-- Dynamic content will be loaded here -->
-        </div>
-    </div>
-</div>
-
-<!-- Enrollment Modal -->
-<div class="enrollment-modal" id="enrollmentModal">
-    <div class="modal-overlay" onclick="closeEnrollmentModal()"></div>
-    <div class="enrollment-container">
-        <button class="close-modal" onclick="closeEnrollmentModal()">
-            <i class="fas fa-times"></i>
-        </button>
-        
-        <div class="enrollment-content">
-            <div class="enrollment-header">
-                <h2>Enroll in <span id="enrollmentCourseTitle">Course</span></h2>
-                <p>Limited seats available - Secure your spot today!</p>
-            </div>
-            
-            <form class="enrollment-form" id="enrollmentForm">
-                <div class="form-group">
-                    <label for="studentName">Full Name *</label>
-                    <input type="text" id="studentName" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="studentEmail">Email Address *</label>
-                    <input type="email" id="studentEmail" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="studentPhone">Phone Number *</label>
-                    <input type="tel" id="studentPhone" name="phone" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="studentCollege">College/Organization *</label>
-                    <input type="text" id="studentCollege" name="college" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="studentExperience">Current Experience Level</label>
-                    <select id="studentExperience" name="experience">
-                        <option value="beginner">Complete Beginner</option>
-                        <option value="some-knowledge">Some Knowledge</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="advanced">Advanced</option>
-                    </select>
-                </div>
-                
-                <div class="enrollment-pricing">
-                    <div class="price-breakdown">
-                        <div class="price-item">
-                            <span>Course Fee:</span>
-                            <span id="coursePrice">₹15,000</span>
-                        </div>
-                        <div class="price-item discount">
-                            <span>Early Bird Discount:</span>
-                            <span>-₹3,000</span>
-                        </div>
-                        <div class="price-item total">
-                            <span>Total Amount:</span>
-                            <span id="totalPrice">₹12,000</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="payment-options">
-                    <h4>Choose Payment Method:</h4>
-                    <div class="payment-methods">
-                        <label class="payment-method">
-                            <input type="radio" name="payment" value="full" checked>
-                            <span class="payment-label">
-                                <strong>Pay Full Amount</strong>
-                                <small>Get additional 5% discount</small>
-                            </span>
-                        </label>
-                        <label class="payment-method">
-                            <input type="radio" name="payment" value="installment">
-                            <span class="payment-label">
-                                <strong>Pay in Installments</strong>
-                                <small>2 EMIs of ₹6,500 each</small>
-                            </span>
-                        </label>
-                    </div>
-                </div>
-                
-                <button type="submit" class="btn-enroll-submit">
-                    <i class="fas fa-credit-card"></i>
-                    Proceed to Payment
-                </button>
-                
-                <div class="secure-payment-notice">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Secure payment powered by Razorpay</span>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
     <!-- Footer Section -->
     <footer class="footer">
