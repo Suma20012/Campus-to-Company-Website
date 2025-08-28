@@ -364,7 +364,7 @@ a:hover {
 .hero {
     background: var(--gradient-hero);
     color: var(--white);
-    padding: var(--space-32) 0;
+    padding: var(--space-16) 0;
     position: relative;
     overflow: hidden;
     min-height: 100vh;
@@ -567,7 +567,7 @@ a:hover {
 /* ========== HERO IMAGE ========== */
 .hero-image {
     position: relative;
-}
+} 
 
 .image-card {
     background: rgba(255, 255, 255, 0.1);

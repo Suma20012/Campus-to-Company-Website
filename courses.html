@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Campus to Company | Industry-Relevant Training Programs</title>
+    <meta name="description" content="Explore our comprehensive courses in Data Analytics, Python Programming, Digital Marketing, and more. Choose individual modules or complete courses.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/courses.css">
+    <link rel="stylesheet" href="assets/css/course-detail.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                Campus To Company
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html" class="active">Courses</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-controls">
+                <div class="theme-toggle" onclick="toggleTheme()">
+                    <div class="theme-slider">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Courses Hero Section -->
+    <section class="courses-hero">
+        <div class="courses-container">
+            <h1>Choose Your Career Path</h1>
+            <p>Industry-relevant courses designed for real-world success</p>
+            <div class="course-search">
+                <input type="text" placeholder="Search courses..." id="courseSearch">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter Section -->
+    <section class="category-filter-section">
+        <div class="courses-container">
+            <div class="category-tabs">
+                <button class="tab-button active" data-category="all">All Courses</button>
+                <button class="tab-button" data-category="technical">Technical</button>
+                <button class="tab-button" data-category="business">Business</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Grid Section -->
+    <section class="courses-grid-section section">
+        <div class="courses-container">
+            <div class="section-header">
+                <h2>Our Training Programs</h2>
+                <p>6 industry-relevant courses designed for real-world success</p>
+            </div>
+            
+            <!-- Courses Grid -->
+            <div class="courses-grid">
+                <!-- Data Analytics Course -->
+                <div class="course-card" data-category="technical" data-course-id="data-analytics">
+                    <div class="course-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="Data Analytics Course" loading="lazy">
+                        <div class="course-level">Beginner to Advanced</div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">
+                            <i class="fas fa-chart-line"></i>
+                            Data & Analytics
+                        </div>
+                        <h3 class="course-title">Master Data Analytics</h3>
+                        <p class="course-description">Master data analysis with Python, SQL, and advanced visualization tools. Learn to extract insights from complex datasets.</p>
+                        <div class="course-meta">
+                            <div><i class="fas fa-clock"></i>12 Weeks</div>
+                            <div><i class="fas fa-project-diagram"></i>8 Projects</div>
+                            <div><i class="fas fa-star"></i>4.8 (234 reviews)</div>
+                        </div>
+                        <div class="course-highlights">
+                            <span class="highlight-tag">Python</span>
+                            <span class="highlight-tag">SQL</span>
+                            <span class="highlight-tag">Tableau</span>
+                            <span class="highlight-tag">Excel</span>
+                        </div>
+                        <div class="course-actions">
+                            <button class="btn-know-more" onclick="openCourseDetails('data-analytics')">
+                                <i class="fas fa-info-circle"></i> Know More
+                            </button>
+                            <button class="btn-join-now" onclick="openIndividualCourses('data-analytics')">
+                                <i class="fas fa-rocket"></i> Join Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Python Programming Course -->
+                <div class="course-card" data-category="technical" data-course-id="python-programming">
+                    <div class="course-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400&h=250&fit=crop" alt="Python Programming Course" loading="lazy">
+                        <div class="course-level">Beginner to Expert</div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">
+                            <i class="fas fa-code"></i>
+                            Programming
+                        </div>
+                        <h3 class="course-title">Python Programming Pro</h3>
+                        <p class="course-description">Complete Python mastery from basics to advanced topics including web development, automation, and data science.</p>
+                        <div class="course-meta">
+                            <div><i class="fas fa-clock"></i>10 Weeks</div>
+                            <div><i class="fas fa-project-diagram"></i>10 Projects</div>
+                            <div><i class="fas fa-star"></i>4.9 (189 reviews)</div>
+                        </div>
+                        <div class="course-highlights">
+                            <span class="highlight-tag">Web Dev</span>
+                            <span class="highlight-tag">Automation</span>
+                            <span class="highlight-tag">APIs</span>
+                            <span class="highlight-tag">Django</span>
+                        </div>
+                        <div class="course-actions">
+                            <button class="btn-know-more" onclick="openCourseDetails('python-programming')">
+                                <i class="fas fa-info-circle"></i> Know More
+                            </button>
+                            <button class="btn-join-now" onclick="openIndividualCourses('python-programming')">
+                                <i class="fas fa-rocket"></i> Join Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Marketing Course -->
+                <div class="course-card" data-category="business" data-course-id="digital-marketing">
+                    <div class="course-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop" alt="Digital Marketing Course" loading="lazy">
+                        <div class="course-level">Beginner to Advanced</div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">
+                            <i class="fas fa-bullhorn"></i>
+                            Marketing
+                        </div>
+                        <h3 class="course-title">Digital Marketing Expert</h3>
+                        <p class="course-description">Master digital marketing strategies including SEO, social media, PPC, and analytics to drive business growth.</p>
+                        <div class="course-meta">
+                            <div><i class="fas fa-clock"></i>8 Weeks</div>
+                            <div><i class="fas fa-project-diagram"></i>6 Campaigns</div>
+                            <div><i class="fas fa-star"></i>4.7 (156 reviews)</div>
+                        </div>
+                        <div class="course-highlights">
+                            <span class="highlight-tag">SEO</span>
+                            <span class="highlight-tag">Social Media</span>
+                            <span class="highlight-tag">PPC</span>
+                            <span class="highlight-tag">Analytics</span>
+                        </div>
+                        <div class="course-actions">
+                            <button class="btn-know-more" onclick="openCourseDetails('digital-marketing')">
+                                <i class="fas fa-info-circle"></i> Know More
+                            </button>
+                            <button class="btn-join-now" onclick="openIndividualCourses('digital-marketing')">
+                                <i class="fas fa-rocket"></i> Join Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tally ERP Course -->
+                <div class="course-card" data-category="business" data-course-id="tally-erp">
+                    <div class="course-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=250&fit=crop" alt="Tally ERP Course" loading="lazy">
+                        <div class="course-level">Beginner to Advanced</div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">
+                            <i class="fas fa-calculator"></i>
+                            Accounting
+                        </div>
+                        <h3 class="course-title">Tally ERP 9 Complete</h3>
+                        <p class="course-description">Master Tally ERP 9 for complete business accounting, inventory management, and GST compliance.</p>
+                        <div class="course-meta">
+                            <div><i class="fas fa-clock"></i>4 Weeks</div>
+                            <div><i class="fas fa-project-diagram"></i>5 Projects</div>
+                            <div><i class="fas fa-star"></i>4.6 (98 reviews)</div>
+                        </div>
+                        <div class="course-highlights">
+                            <span class="highlight-tag">GST</span>
+                            <span class="highlight-tag">Inventory</span>
+                            <span class="highlight-tag">Reports</span>
+                            <span class="highlight-tag">Payroll</span>
+                        </div>
+                        <div class="course-actions">
+                            <button class="btn-know-more" onclick="openCourseDetails('tally-erp')">
+                                <i class="fas fa-info-circle"></i> Know More
+                            </button>
+                            <button class="btn-join-now" onclick="openIndividualCourses('tally-erp')">
+                                <i class="fas fa-rocket"></i> Join Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SQL Database Course -->
+                <div class="course-card" data-category="technical" data-course-id="sql-database">
+                    <div class="course-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=400&h=250&fit=crop" alt="SQL Database Course" loading="lazy">
+                        <div class="course-level">Beginner to Advanced</div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">
+                            <i class="fas fa-database"></i>
+                            Database
+                        </div>
+                        <h3 class="course-title">SQL Database Management</h3>
+                        <p class="course-description">Master SQL queries, database design, and optimization techniques for efficient data management.</p>
+                        <div class="course-meta">
+                            <div><i class="fas fa-clock"></i>6 Weeks</div>
+                            <div><i class="fas fa-project-diagram"></i>8 Databases</div>
+                            <div><i class="fas fa-star"></i>4.8 (167 reviews)</div>
+                        </div>
+                        <div class="course-highlights">
+                            <span class="highlight-tag">MySQL</span>
+                            <span class="highlight-tag">PostgreSQL</span>
+                            <span class="highlight-tag">Optimization</span>
+                            <span class="highlight-tag">Design</span>
+                        </div>
+                        <div class="course-actions">
+                            <button class="btn-know-more" onclick="openCourseDetails('sql-database')">
+                                <i class="fas fa-info-circle"></i> Know More
+                            </button>
+                            <button class="btn-join-now" onclick="openIndividualCourses('sql-database')">
+                                <i class="fas fa-rocket"></i> Join Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HR Management Course -->
+                <div class="course-card" data-category="business" data-course-id="hr-management">
+                    <div class="course-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&h=250&fit=crop" alt="HR Management Course" loading="lazy">
+                        <div class="course-level">Intermediate to Advanced</div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">
+                            <i class="fas fa-users"></i>
+                            Human Resources
+                        </div>
+                        <h3 class="course-title">HR Management Pro</h3>
+                        <p class="course-description">Comprehensive HR management covering recruitment, employee relations, performance management, and HR analytics.</p>
+                        <div class="course-meta">
+                            <div><i class="fas fa-clock"></i>8 Weeks</div>
+                            <div><i class="fas fa-project-diagram"></i>6 Case Studies</div>
+                            <div><i class="fas fa-star"></i>4.7 (143 reviews)</div>
+                        </div>
+                        <div class="course-highlights">
+                            <span class="highlight-tag">Recruitment</span>
+                            <span class="highlight-tag">Performance</span>
+                            <span class="highlight-tag">Analytics</span>
+                            <span class="highlight-tag">Policy</span>
+                        </div>
+                        <div class="course-actions">
+                            <button class="btn-know-more" onclick="openCourseDetails('hr-management')">
+                                <i class="fas fa-info-circle"></i> Know More
+                            </button>
+                            <button class="btn-join-now" onclick="openIndividualCourses('hr-management')">
+                                <i class="fas fa-rocket"></i> Join Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="courses-container">
+            <h2>Ready to Transform Your Career?</h2>
+            <p>Join thousands of students who have successfully transitioned from campus to corporate</p>
+            <div class="cta-buttons">
+                <button class="btn-primary" onclick="document.querySelector('.courses-grid').scrollIntoView()">
+                    <i class="fas fa-graduation-cap"></i> Browse All Courses
+                </button>
+                <button class="btn-secondary" onclick="window.location.href='#contact'">
+                    <i class="fas fa-phone"></i> Talk to Expert
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include JavaScript Files -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/courses.js"></script>
+    
+    <!-- Initialize Navigation and Courses -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize navigation
+            if (typeof NavigationController !== 'undefined') {
+                NavigationController.init();
+            }
+            
+            // Initialize theme
+            if (typeof initializeTheme !== 'undefined') {
+                initializeTheme();
+            }
+        });
+    </script>
+</body>
+</html>

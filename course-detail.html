@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details - Campus to Company</title>
+    <meta name="description" content="Detailed information about our industry-relevant courses with curriculum, projects, and career outcomes.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+    <!-- Your CSS Files -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/courses.css">
+    
+    <style>
+        /* Course Details Specific Styles */
+        .course-detail-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-detail-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-20px, -20px) rotate(1deg); }
+            66% { transform: translate(20px, -10px) rotate(-1deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-info h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-info p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .meta-item i {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-enroll,
+        .btn-demo {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-enroll {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-demo {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-enroll:hover,
+        .btn-demo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .hero-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .price-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .price-original {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-current {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-label {
+            opacity: 0.8;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .features-list i {
+            color: #10b981;
+            font-size: 1.1rem;
+        }
+
+        .course-content-section {
+            padding: 4rem 0;
+            background: var(--bg-primary);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .curriculum-section,
+        .projects-section,
+        .outcomes-section {
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px var(--shadow-light);
+            margin-bottom: 2rem;
+        }
+
+        .curriculum-section h3,
+        .projects-section h3,
+        .outcomes-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .curriculum-item {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .curriculum-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px var(--shadow-light);
+        }
+
+        .curriculum-item h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .curriculum-item p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .sidebar-section {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px var(--shadow-light);
+            margin-bottom: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .instructor-card {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .instructor-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--primary-color);
+        }
+
+        .instructor-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .instructor-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .instructor-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .course-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .talk-to-expert-btn {
+            width: 100%;
+            display: block;
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .talk-to-expert-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .related-course {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .related-course:hover {
+            background: rgba(124, 58, 237, 0.05);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .related-course h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .related-course p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-info h1 {
+                font-size: 2.2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+
+            .sidebar-section {
+                position: static;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-meta {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .mobile-menu-toggle {
+                display: flex !important;
+            }
+
+            .nav-menu.mobile-open {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-info h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-info p {
+                font-size: 1rem;
+            }
+
+            .curriculum-section,
+            .projects-section,
+            .outcomes-section,
+            .sidebar-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                Campus To Company
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html" class="active">Courses</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-controls">
+                <div class="theme-toggle" onclick="toggleTheme()">
+                    <div class="theme-slider">
+                        <i class="fas fa-sun" id="theme-icon"></i>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Course Details Hero -->
+    <section class="course-detail-hero" data-aos="fade-up">
+        <div class="hero-content">
+            <div class="hero-info" data-aos="fade-right" data-aos-delay="200">
+                <h1 id="courseTitle">Data Analytics Mastery</h1>
+                <p id="courseDescription">Master data analysis, visualization, and business intelligence tools. Learn Excel, Power BI, and statistical analysis techniques to become a data-driven professional.</p>
+                
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span id="courseDuration">12 Weeks</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span id="courseStudents">500+ Students</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-star"></i>
+                        <span id="courseRating">4.8 Rating</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>Certificate</span>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#" class="btn-enroll" onclick="redirectToEnrollment()">
+                        <i class="fas fa-rocket"></i>
+                        Enroll Now
+                    </a>
+                    <button class="btn-demo" onclick="watchDemo()">
+                        <i class="fas fa-play"></i>
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-card" data-aos="fade-left" data-aos-delay="300">
+                <div class="price-section">
+                    <div class="price-original" id="originalPrice">₹20,000</div>
+                    <div class="price-current" id="currentPrice">₹15,000</div>
+                    <div class="price-label">One-time payment</div>
+                </div>
+
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Lifetime access to course materials</li>
+                    <li><i class="fas fa-check"></i> <span id="projectCount">8+</span> hands-on projects</li>
+                    <li><i class="fas fa-check"></i> Industry expert mentorship</li>
+                    <li><i class="fas fa-check"></i> Job placement assistance</li>
+                    <li><i class="fas fa-check"></i> Certificate of completion</li>
+                    <li><i class="fas fa-check"></i> Community access</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Content -->
+    <section class="course-content-section">
+        <div class="content-grid">
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Curriculum Section -->
+                <div class="curriculum-section" data-aos="fade-up" data-aos-delay="200">
+                    <h3><i class="fas fa-book-open"></i> Course Curriculum</h3>
+                    
+                    <div id="curriculumContent">
+                        <!-- Default Data Analytics Curriculum -->
+                        <div class="curriculum-item">
+                            <h4>Module 1: Excel Fundamentals & Advanced Features</h4>
+                            <p>Master Excel from basics to advanced functions, pivot tables, and data visualization.</p>
+                            <div class="skills-tags">
+                                <span class="skill-tag">Excel Functions</span>
+                                <span class="skill-tag">Pivot Tables</span>
+                                <span class="skill-tag">Charts</span>
+                                <span class="skill-tag">Macros</span>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-item">
+                            <h4>Module 2: Power BI Dashboard Creation</h4>
+                            <p>Create interactive dashboards and reports using Microsoft Power BI.</p>
+                            <div class="skills-tags">
+                                <span class="skill-tag">Power BI Desktop</span>
+                                <span class="skill-tag">DAX</span>
+                                <span class="skill-tag">Data Modeling</span>
+                                <span class="skill-tag">Visualizations</span>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-item">
+                            <h4>Module 3: Statistical Analysis & Data Mining</h4>
+                            <p>Learn statistical concepts and data mining techniques for business insights.</p>
+                            <div class="skills-tags">
+                                <span class="skill-tag">Statistics</span>
+                                <span class="skill-tag">Hypothesis Testing</span>
+                                <span class="skill-tag">Regression</span>
+                                <span class="skill-tag">Correlation</span>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-item">
+                            <h4>Module 4: SQL for Data Analysis</h4>
+                            <p>Query databases effectively and perform data analysis using SQL.</p>
+                            <div class="skills-tags">
+                                <span class="skill-tag">SQL Queries</span>
+                                <span class="skill-tag">Joins</span>
+                                <span class="skill-tag">Subqueries</span>
+                                <span class="skill-tag">Functions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects Section -->
+                <div class="projects-section" data-aos="fade-up" data-aos-delay="300">
+                    <h3><i class="fas fa-project-diagram"></i> Hands-on Projects</h3>
+                    
+                    <div id="projectsContent">
+                        <!-- Default Data Analytics Projects -->
+                        <div class="curriculum-item">
+                            <h4>Sales Performance Dashboard</h4>
+                            <p>Build a comprehensive sales dashboard using Power BI with real-time data connections.</p>
+                        </div>
+
+                        <div class="curriculum-item">
+                            <h4>Customer Segmentation Analysis</h4>
+                            <p>Perform customer segmentation using statistical analysis and create actionable insights.</p>
+                        </div>
+
+                        <div class="curriculum-item">
+                            <h4>Financial Data Analysis</h4>
+                            <p>Analyze financial data, create budget forecasts, and variance analysis reports.</p>
+                        </div>
+
+                        <div class="curriculum-item">
+                            <h4>E-commerce Analytics Project</h4>
+                            <p>Complete end-to-end analysis of e-commerce data including user behavior and conversion optimization.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Outcomes -->
+                <div class="outcomes-section" data-aos="fade-up" data-aos-delay="400">
+                    <h3><i class="fas fa-trophy"></i> Learning Outcomes</h3>
+                    
+                    <ul class="features-list" style="color: var(--text-primary);">
+                        <li><i class="fas fa-check" style="color: #10b981;"></i> Create professional dashboards and reports</li>
+                        <li><i class="fas fa-check" style="color: #10b981;"></i> Perform advanced data analysis and statistical modeling</li>
+                        <li><i class="fas fa-check" style="color: #10b981;"></i> Extract insights from complex datasets</li>
+                        <li><i class="fas fa-check" style="color: #10b981;"></i> Present data findings to stakeholders effectively</li>
+                        <li><i class="fas fa-check" style="color: #10b981;"></i> Make data-driven business decisions</li>
+                        <li><i class="fas fa-check" style="color: #10b981;"></i> Automate reporting processes</li>
+                        <li><i class="fas fa-check" style="color: #10b981;"></i> Master industry-standard tools and techniques</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Instructor Info -->
+                <div class="sidebar-section" data-aos="fade-left" data-aos-delay="200">
+                    <div class="instructor-card">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Instructor" class="instructor-avatar" id="instructorAvatar">
+                        <div class="instructor-name" id="instructorName">Rajesh Kumar</div>
+                        <div class="instructor-title" id="instructorTitle">Data Analytics Expert</div>
+                        <p class="instructor-description" id="instructorDescription">15+ years experience in data science and business intelligence</p>
+                    </div>
+
+                    <div class="course-stats">
+                        <div class="stat-box">
+                            <div class="stat-number" id="statStudents">500+</div>
+                            <div class="stat-label">Students</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" id="statRating">4.8</div>
+                            <div class="stat-label">Rating</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Completion</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support</div>
+                        </div>
+                    </div>
+
+                    <a href="contact.html" class="talk-to-expert-btn">
+                        <i class="fas fa-comments"></i> Talk to Expert
+                    </a>
+                </div>
+
+                <!-- Related Courses -->
+                <div class="sidebar-section" data-aos="fade-left" data-aos-delay="300">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);">Related Courses</h3>
+                    
+                    <div class="related-course" onclick="window.location.href='course-detail.html?course=python-programming'">
+                        <h4>Python Programming Pro</h4>
+                        <p>₹14,000 - 16 Weeks</p>
+                    </div>
+
+                    <div class="related-course" onclick="window.location.href='course-detail.html?course=digital-marketing'">
+                        <h4>Digital Marketing Expert</h4>
+                        <p>₹12,000 - 10 Weeks</p>
+                    </div>
+
+                    <div class="related-course" onclick="window.location.href='course-detail.html?course=sql-database'">
+                        <h4>SQL Database Management</h4>
+                        <p>₹9,000 - 8 Weeks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 600,
+            once: true,
+            offset: 100
+        });
+
+        // Course data with detailed curriculum and projects
+        const courseData = {
+            'data-analytics': {
+                title: 'Data Analytics Mastery',
+                description: 'Master data analysis, visualization, and business intelligence tools. Learn Excel, Power BI, and statistical analysis techniques to become a data-driven professional.',
+                duration: '12 Weeks',
+                students: '500+ Students',
+                rating: '4.8',
+                originalPrice: '₹20,000',
+                currentPrice: '₹15,000',
+                projectCount: '8+',
+                instructor: {
+                    name: 'Rajesh Kumar',
+                    title: 'Data Analytics Expert',
+                    description: '15+ years experience in data science and business intelligence',
+                    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face'
+                }
+            },
+            'python-programming': {
+                title: 'Python Programming Pro',
+                description: 'Build web applications, automate tasks, and develop scalable solutions using Python frameworks and libraries.',
+                duration: '16 Weeks',
+                students: '400+ Students',
+                rating: '4.9',
+                originalPrice: '₹18,000',
+                currentPrice: '₹14,000',
+                projectCount: '12+',
+                instructor: {
+                    name: 'Priya Sharma',
+                    title: 'Python Programming Expert',
+                    description: '12+ years in software development and automation',
+                    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face'
+                }
+            },
+            'digital-marketing': {
+                title: 'Digital Marketing Expert',
+                description: 'Master social media marketing, Google Ads, SEO, content marketing, and email marketing strategies for business growth.',
+                duration: '10 Weeks',
+                students: '600+ Students',
+                rating: '4.7',
+                originalPrice: '₹16,000',
+                currentPrice: '₹12,000',
+                projectCount: '6+',
+                instructor: {
+                    name: 'Anjali Mehta',
+                    title: 'Digital Marketing Expert',
+                    description: '10+ years in digital marketing and brand strategy',
+                    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face'
+                }
+            },
+            'hr-management': {
+                title: 'HR Management Pro',
+                description: 'Comprehensive HR management training covering recruitment, performance management, employee relations, and HR analytics.',
+                duration: '8 Weeks',
+                students: '300+ Students',
+                rating: '4.6',
+                originalPrice: '₹14,000',
+                currentPrice: '₹11,000',
+                projectCount: '5+',
+                instructor: {
+                    name: 'Vikram Singh',
+                    title: 'HR Management Expert',
+                    description: '14+ years in human resources and talent management',
+                    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face'
+                }
+            },
+            'sql-database': {
+                title: 'SQL Database Management',
+                description: 'Master database design, complex queries, stored procedures, and database optimization techniques for enterprise applications.',
+                duration: '8 Weeks',
+                students: '350+ Students',
+                rating: '4.7',
+                originalPrice: '₹12,000',
+                currentPrice: '₹9,000',
+                projectCount: '6+',
+                instructor: {
+                    name: 'Rajesh Kumar',
+                    title: 'Database Expert',
+                    description: '12+ years in database management and optimization',
+                    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face'
+                }
+            },
+            'tally-erp': {
+                title: 'Tally ERP 9 Complete',
+                description: 'Master financial accounting and inventory management with Tally ERP 9 software for business accounting solutions.',
+                duration: '6 Weeks',
+                students: '250+ Students',
+                rating: '4.6',
+                originalPrice: '₹10,000',
+                currentPrice: '₹8,000',
+                projectCount: '4+',
+                instructor: {
+                    name: 'Vikram Singh',
+                    title: 'Accounting Expert',
+                    description: '10+ years in financial accounting and ERP systems',
+                    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face'
+                }
+            }
+        };
+
+        // Get course ID from URL
+        function getCourseIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const course = urlParams.get('course') || 'data-analytics';
+            return urlParams.get('course') || 'data-analytics';
+        }
+
+        // Load course data
+        function loadCourseData() {
+            const courseId = getCourseIdFromUrl();
+            const course = courseData[courseId];
+            
+            if (course) {
+                // Update main course info
+                document.getElementById('courseTitle').textContent = course.title;
+                document.getElementById('courseDescription').textContent = course.description;
+                document.getElementById('courseDuration').textContent = course.duration;
+                document.getElementById('courseStudents').textContent = course.students;
+                document.getElementById('courseRating').textContent = course.rating + ' Rating';
+                document.getElementById('originalPrice').textContent = course.originalPrice;
+                document.getElementById('currentPrice').textContent = course.currentPrice;
+                document.getElementById('projectCount').textContent = course.projectCount;
+                
+                // Update instructor info
+                document.getElementById('instructorName').textContent = course.instructor.name;
+                document.getElementById('instructorTitle').textContent = course.instructor.title;
+                document.getElementById('instructorDescription').textContent = course.instructor.description;
+                document.getElementById('instructorAvatar').src = course.instructor.avatar;
+                
+                // Update stats
+                document.getElementById('statStudents').textContent = course.students;
+                document.getElementById('statRating').textContent = course.rating;
+                
+                // Update page title
+                document.title = `${course.title} - Campus to Company`;
+                
+                // Load course-specific curriculum
+                loadCourseCurriculum(courseId);
+            }
+        }
+
+        // Load course-specific curriculum
+        function loadCourseCurriculum(courseId) {
+            const curriculumData = {
+                'python-programming': {
+                    modules: [
+                        {
+                            title: 'Module 1: Python Fundamentals',
+                            description: 'Learn Python syntax, data types, control structures, and object-oriented programming concepts.',
+                            skills: ['Python Syntax', 'OOP', 'Data Types', 'Functions']
+                        },
+                        {
+                            title: 'Module 2: Web Development with Django',
+                            description: 'Build dynamic web applications using Django framework with database integration.',
+                            skills: ['Django', 'Templates', 'Models', 'Views']
+                        },
+                        {
+                            title: 'Module 3: API Development & Flask',
+                            description: 'Create RESTful APIs using Flask and integrate with databases and external services.',
+                            skills: ['Flask', 'REST APIs', 'JSON', 'Database Integration']
+                        },
+                        {
+                            title: 'Module 4: Automation & Scripting',
+                            description: 'Automate tasks, web scraping, and system administration using Python scripts.',
+                            skills: ['Automation', 'Web Scraping', 'File Handling', 'System Admin']
+                        }
+                    ],
+                    projects: [
+                        'E-commerce Web Application',
+                        'Task Automation Suite',
+                        'RESTful API Development',
+                        'Data Visualization Dashboard'
+                    ]
+                },
+                'digital-marketing': {
+                    modules: [
+                        {
+                            title: 'Module 1: Digital Marketing Fundamentals',
+                            description: 'Understanding digital marketing landscape, customer journey, and marketing funnels.',
+                            skills: ['Marketing Strategy', 'Customer Journey', 'Funnels', 'Analytics']
+                        },
+                        {
+                            title: 'Module 2: Search Engine Optimization (SEO)',
+                            description: 'Master on-page and off-page SEO techniques to improve organic search rankings.',
+                            skills: ['On-page SEO', 'Off-page SEO', 'Keywords', 'Content Strategy']
+                        },
+                        {
+                            title: 'Module 3: Google Ads & Facebook Ads',
+                            description: 'Create and optimize paid advertising campaigns across Google and Facebook platforms.',
+                            skills: ['Google Ads', 'Facebook Ads', 'Campaign Optimization', 'A/B Testing']
+                        },
+                        {
+                            title: 'Module 4: Content & Email Marketing',
+                            description: 'Develop content strategies and email marketing campaigns for engagement and conversion.',
+                            skills: ['Content Strategy', 'Email Marketing', 'Social Media', 'Analytics']
+                        }
+                    ],
+                    projects: [
+                        'Complete SEO Audit & Strategy',
+                        'Google Ads Campaign Setup',
+                        'Social Media Marketing Campaign',
+                        'Email Marketing Automation'
+                    ]
+                }
+                // Add more course curricula as needed
+            };
+
+            if (curriculumData[courseId]) {
+                updateCurriculumSection(curriculumData[courseId]);
+            }
+        }
+
+        // Update curriculum section with course-specific data
+        function updateCurriculumSection(data) {
+            const curriculumContent = document.getElementById('curriculumContent');
+            const projectsContent = document.getElementById('projectsContent');
+
+            if (data.modules) {
+                curriculumContent.innerHTML = data.modules.map(module => `
+                    <div class="curriculum-item">
+                        <h4>${module.title}</h4>
+                        <p>${module.description}</p>
+                        <div class="skills-tags">
+                            ${module.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            if (data.projects) {
+                projectsContent.innerHTML = data.projects.map(project => `
+                    <div class="curriculum-item">
+                        <h4>${project}</h4>
+                        <p>Hands-on project to apply your learning and build portfolio-worthy work.</p>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Theme toggle function
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize theme
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            body.setAttribute('data-theme', savedTheme);
+            
+            if (savedTheme === 'dark') {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const mobileToggle = document.querySelector('.mobile-menu-toggle i');
+            
+            navMenu.classList.toggle('mobile-open');
+            
+            if (navMenu.classList.contains('mobile-open')) {
+                mobileToggle.classList.replace('fa-bars', 'fa-times');
+            } else {
+                mobileToggle.classList.replace('fa-times', 'fa-bars');
+            }
+        }
+
+        // Redirect to enrollment
+        function redirectToEnrollment() {
+            const courseId = getCourseIdFromUrl();
+            window.location.href = `course-enrollment.html?course=${courseId}`;
+        }
+
+        // Watch demo
+        function watchDemo() {
+            showNotification('Demo video will be available soon! Contact us for a live demo.', 'info');
+        }
+
+        // Show notification
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 2rem;
+                background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+                color: white;
+                border-radius: 12px;
+                z-index: 10000;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                font-weight: 600;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.style.transform = 'translateX(0)', 100);
+            setTimeout(() => notification.style.transform = 'translateX(100%)', 4000);
+            setTimeout(() => notification.remove(), 4500);
+        }
+
+        // Hide loading screen
+        function hideLoadingScreen() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }
+        }
+
+        // Handle mobile menu visibility
+        function handleMobileMenuVisibility() {
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            if (window.innerWidth <= 768) {
+                mobileToggle.style.display = 'flex';
+            } else {
+                mobileToggle.style.display = 'none';
+                // Close mobile menu if it's open
+                const navMenu = document.querySelector('.nav-menu');
+                if (navMenu) {
+                    navMenu.classList.remove('mobile-open');
+                }
+            }
+        }
+
+        // Page initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeTheme();
+            loadCourseData();
+            hideLoadingScreen();
+            handleMobileMenuVisibility();
+            
+            // Handle window resize
+            window.addEventListener('resize', handleMobileMenuVisibility);
+        });
+    </script>
+</body>
+</html>

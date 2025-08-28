@@ -1,11 +1,9 @@
 /* ============================================
-   NAVIGATION CONTROLLER
+   COMPLETE NAVIGATION CONTROLLER
    Campus to Company Website
+   Handles multi-page navigation and interactions
    ============================================ */
 
-/**
- * Navigation state management
- */
 const NavigationController = {
     currentSection: 'home',
     isScrolling: false,
@@ -13,25 +11,73 @@ const NavigationController = {
     headerHeight: 80,
     
     /**
-     * Initialize navigation functionality
+     * Initialize all navigation functionality
      */
     init() {
+        console.log('Initializing Navigation Controller...');
+        this.setupPageNavigation();
         this.setupSmoothScrolling();
         this.setupActiveNavigation();
         this.setupHeaderScrollEffect();
         this.setupMobileNavigation();
         this.setupScrollToTop();
         this.setupKeyboardNavigation();
+        this.setupLoadingScreen();
+        console.log('Navigation Controller initialized successfully');
     },
     
     /**
-     * Setup smooth scrolling for navigation links
+     * Setup page navigation for multi-page website
+     */
+    setupPageNavigation() {
+        // Handle navigation links to other pages
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href$=".html"]');
+            if (link) {
+                e.preventDefault();
+                this.navigateToPage(link.href, link.textContent.trim());
+            }
+        });
+        
+        // Handle logo clicks
+        document.addEventListener('click', (e) => {
+            const logo = e.target.closest('.logo');
+            if (logo) {
+                e.preventDefault();
+                this.navigateToPage('index.html', 'Home');
+            }
+        });
+    },
+    
+    /**
+     * Navigate to a specific page with loading animation
+     */
+    navigateToPage(url, pageName = '') {
+        console.log(`Navigating to: ${url} (${pageName})`);
+        
+        // Show loading screen
+        this.showLoadingScreen();
+        
+        // Add page transition class to body
+        document.body.classList.add('page-transitioning');
+        
+        // Smooth transition delay
+        setTimeout(() => {
+            window.location.href = url;
+        }, 500);
+        
+        // Analytics tracking (if available)
+        this.trackNavigation(url, pageName);
+    },
+    
+    /**
+     * Setup smooth scrolling for same-page navigation
      */
     setupSmoothScrolling() {
-        const navLinks = document.querySelectorAll('.nav-link, .btn-primary[href^="#"], .btn-secondary[href^="#"]');
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
+        // Handle hash links (same page navigation)
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href^="#"]');
+            if (link && !link.href.includes('.html')) {
                 e.preventDefault();
                 
                 const targetId = link.getAttribute('href').substring(1);
@@ -41,23 +87,16 @@ const NavigationController = {
                     this.scrollToElement(targetElement);
                     this.updateActiveNavLink(link);
                 }
-            });
+            }
         });
-        
-        // Handle logo click
-        const logo = document.querySelector('.logo');
-        if (logo) {
-            logo.addEventListener('click', () => {
-                this.scrollToTop();
-            });
-        }
     },
     
     /**
-     * Smooth scroll to element
+     * Smooth scroll to element with offset
      */
     scrollToElement(element, offset = 0) {
-        const targetPosition = element.offsetTop - this.headerHeight - offset;
+        const headerHeight = document.querySelector('.header')?.offsetHeight || this.headerHeight;
+        const targetPosition = element.offsetTop - headerHeight - offset;
         
         this.isScrolling = true;
         
@@ -79,138 +118,107 @@ const NavigationController = {
     },
     
     /**
-     * Fallback smooth scrolling implementation
+     * Fallback smooth scrolling for older browsers
      */
-    smoothScrollTo(targetY, duration = 800) {
-        const startY = window.pageYOffset;
-        const difference = targetY - startY;
-        const startTime = performance.now();
+    smoothScrollTo(targetPosition) {
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        const duration = 800;
+        let startTime = null;
         
-        const step = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Easing function
-            const ease = this.easeInOutCubic(progress);
-            
-            window.scrollTo(0, startY + difference * ease);
-            
-            if (progress < 1) {
-                requestAnimationFrame(step);
-            }
+        const animation = (currentTime) => {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = this.easeInOutQuad(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
         };
         
-        requestAnimationFrame(step);
+        requestAnimationFrame(animation);
     },
     
     /**
-     * Easing function for smooth animation
+     * Easing function for smooth scrolling
      */
-    easeInOutCubic(t) {
-        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    easeInOutQuad(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
     },
     
     /**
      * Setup active navigation highlighting
      */
     setupActiveNavigation() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
+        // Set active navigation item based on current page
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.nav-menu a, .nav-links a');
         
-        if (sections.length === 0) return;
-        
-        const observer = new IntersectionObserver((entries) => {
-            if (this.isScrolling) return;
-            
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-                    const sectionId = entry.target.id;
-                    this.updateActiveSection(sectionId);
-                }
-            });
-        }, {
-            threshold: [0.3, 0.5, 0.7],
-            rootMargin: '-20% 0px -20% 0px'
-        });
-        
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-        
-        // Handle scroll end to update active section
-        window.addEventListener('scroll', () => {
-            clearTimeout(this.scrollTimeout);
-            this.scrollTimeout = setTimeout(() => {
-                if (!this.isScrolling) {
-                    this.updateActiveNavigationOnScroll();
-                }
-            }, 150);
-        });
-    },
-    
-    /**
-     * Update active section based on scroll position
-     */
-    updateActiveNavigationOnScroll() {
-        const sections = document.querySelectorAll('section[id]');
-        const scrollPosition = window.pageYOffset + this.headerHeight + 100;
-        
-        let activeSection = 'home';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionBottom = sectionTop + section.offsetHeight;
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                activeSection = section.id;
-            }
-        });
-        
-        this.updateActiveSection(activeSection);
-    },
-    
-    /**
-     * Update active section and navigation
-     */
-    updateActiveSection(sectionId) {
-        if (this.currentSection === sectionId) return;
-        
-        this.currentSection = sectionId;
-        
-        // Update navigation links
-        const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href === `#${sectionId}`) {
+            const linkPage = link.getAttribute('href');
+            
+            // Remove existing active classes
+            link.classList.remove('active');
+            
+            // Add active class to current page link
+            if (linkPage === currentPage || 
+                (currentPage === 'index.html' && linkPage === 'index.html') ||
+                (currentPage === 'about-us.html' && linkPage === 'about-us.html') ||
+                (currentPage === 'courses.html' && linkPage === 'courses.html')) {
                 link.classList.add('active');
-            } else {
-                link.classList.remove('active');
+                console.log(`Set active navigation for: ${linkPage}`);
             }
         });
         
-        // Update URL without triggering navigation
-        if (history.pushState) {
-            const newUrl = `${window.location.pathname}${sectionId !== 'home' ? '#' + sectionId : ''}`;
-            history.pushState(null, null, newUrl);
+        // Handle scroll-based active navigation for single page
+        if (currentPage === 'index.html') {
+            window.addEventListener('scroll', this.handleScrollNavigation.bind(this));
         }
     },
     
     /**
-     * Update active nav link when clicked
+     * Handle scroll-based navigation highlighting
      */
-    updateActiveNavLink(clickedLink) {
-        const navLinks = document.querySelectorAll('.nav-link');
+    handleScrollNavigation() {
+        if (this.isScrolling) return;
+        
+        const sections = document.querySelectorAll('section[id]');
+        const scrollPosition = window.pageYOffset + this.headerHeight + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                this.updateActiveNavLink(null, sectionId);
+            }
+        });
+    },
+    
+    /**
+     * Update active navigation link
+     */
+    updateActiveNavLink(clickedLink = null, targetId = null) {
+        const navLinks = document.querySelectorAll('.nav-menu a, .nav-links a');
+        
         navLinks.forEach(link => {
             link.classList.remove('active');
+            
+            if (clickedLink && link === clickedLink) {
+                link.classList.add('active');
+            } else if (targetId && link.getAttribute('href') === `#${targetId}`) {
+                link.classList.add('active');
+            }
         });
-        clickedLink.classList.add('active');
     },
     
     /**
      * Setup header scroll effects
      */
     setupHeaderScrollEffect() {
-        const header = document.getElementById('header');
+        const header = document.querySelector('.header');
         if (!header) return;
         
         let lastScrollY = window.pageYOffset;
@@ -219,20 +227,17 @@ const NavigationController = {
         const updateHeader = () => {
             const scrollY = window.pageYOffset;
             
-            // Add scrolled class for styling
-            if (scrollY > 50) {
+            if (scrollY > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
             
-            // Hide/show header on scroll (optional)
-            if (scrollY > 200) {
-                if (scrollY > lastScrollY && !header.classList.contains('nav-hidden')) {
-                    header.classList.add('nav-hidden');
-                } else if (scrollY < lastScrollY && header.classList.contains('nav-hidden')) {
-                    header.classList.remove('nav-hidden');
-                }
+            // Hide header on scroll down, show on scroll up
+            if (scrollY > lastScrollY && scrollY > 200) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
             }
             
             lastScrollY = scrollY;
@@ -250,55 +255,60 @@ const NavigationController = {
     },
     
     /**
-     * Setup mobile navigation
+     * Setup mobile navigation functionality
      */
     setupMobileNavigation() {
         const navContainer = document.querySelector('.nav-container');
-        const navLinks = document.querySelector('.nav-links');
+        const navMenu = document.querySelector('.nav-menu') || document.querySelector('.nav-links');
         
-        if (!navContainer || !navLinks) return;
+        if (!navContainer || !navMenu) return;
         
-        // Create mobile menu toggle button
-        const mobileMenuButton = document.createElement('button');
-        mobileMenuButton.classList.add('mobile-menu-toggle');
-        mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
-        mobileMenuButton.setAttribute('aria-label', 'Toggle mobile menu');
+        // Create mobile menu toggle button if it doesn't exist
+        let mobileToggle = document.querySelector('.mobile-menu-toggle');
+        if (!mobileToggle) {
+            mobileToggle = document.createElement('button');
+            mobileToggle.className = 'mobile-menu-toggle';
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            mobileToggle.setAttribute('aria-label', 'Toggle mobile menu');
+            navContainer.appendChild(mobileToggle);
+        }
         
         // Add mobile menu styles
         this.addMobileMenuStyles();
         
-        // Insert mobile menu button
-        navContainer.appendChild(mobileMenuButton);
-        
-        // Handle mobile menu toggle
-        mobileMenuButton.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-menu-open');
-            mobileMenuButton.classList.toggle('active');
+        // Toggle mobile menu
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('mobile-open');
+            mobileToggle.classList.toggle('active');
+            document.body.classList.toggle('mobile-menu-open');
             
-            const icon = mobileMenuButton.querySelector('i');
-            if (navLinks.classList.contains('mobile-menu-open')) {
+            // Update icon
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('mobile-open')) {
                 icon.classList.replace('fa-bars', 'fa-times');
             } else {
                 icon.classList.replace('fa-times', 'fa-bars');
             }
         });
         
-        // Close mobile menu when link is clicked
-        const navLinkElements = document.querySelectorAll('.nav-link');
-        navLinkElements.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('mobile-menu-open');
-                mobileMenuButton.classList.remove('active');
-                mobileMenuButton.querySelector('i').classList.replace('fa-times', 'fa-bars');
-            });
+        // Close mobile menu when clicking on a link
+        navMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                navMenu.classList.remove('mobile-open');
+                mobileToggle.classList.remove('active');
+                document.body.classList.remove('mobile-menu-open');
+                mobileToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            }
         });
         
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!navContainer.contains(e.target) && navLinks.classList.contains('mobile-menu-open')) {
-                navLinks.classList.remove('mobile-menu-open');
-                mobileMenuButton.classList.remove('active');
-                mobileMenuButton.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            if (!navContainer.contains(e.target) && navMenu.classList.contains('mobile-open')) {
+                navMenu.classList.remove('mobile-open');
+                mobileToggle.classList.remove('active');
+                document.body.classList.remove('mobile-menu-open');
+                mobileToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
             }
         });
     },
@@ -317,15 +327,17 @@ const NavigationController = {
                 background: none;
                 border: none;
                 font-size: 1.5rem;
-                color: var(--primary-color);
+                color: #a855f7;
                 cursor: pointer;
                 padding: 0.5rem;
                 border-radius: 0.5rem;
                 transition: all 0.3s ease;
+                z-index: 1001;
             }
             
             .mobile-menu-toggle:hover {
-                background: rgba(124, 58, 237, 0.1);
+                background: rgba(168, 85, 247, 0.1);
+                transform: scale(1.1);
             }
             
             .mobile-menu-toggle.active {
@@ -337,43 +349,52 @@ const NavigationController = {
                     display: block;
                 }
                 
-                .nav-links {
-                    position: absolute;
-                    top: 100%;
+                .nav-menu, .nav-links {
+                    position: fixed;
+                    top: 0;
                     left: 0;
                     right: 0;
+                    bottom: 0;
                     background: rgba(255, 255, 255, 0.98);
                     backdrop-filter: blur(20px);
                     flex-direction: column;
-                    gap: 0;
-                    padding: 1rem 0;
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                    transform: translateY(-100%);
+                    justify-content: center;
+                    align-items: center;
+                    gap: 2rem;
+                    font-size: 1.2rem;
+                    transform: translateX(-100%);
                     opacity: 0;
-                    pointer-events: none;
+                    visibility: hidden;
                     transition: all 0.3s ease;
                     z-index: 1000;
                 }
                 
-                .nav-links.mobile-menu-open {
-                    transform: translateY(0);
+                .nav-menu.mobile-open, .nav-links.mobile-open {
+                    transform: translateX(0);
                     opacity: 1;
-                    pointer-events: all;
+                    visibility: visible;
                 }
                 
-                .nav-links a {
+                .nav-menu a, .nav-links a {
                     padding: 1rem 2rem;
-                    border-bottom: 1px solid rgba(124, 58, 237, 0.1);
-                    text-align: center;
+                    border-radius: 10px;
                     transition: all 0.3s ease;
+                    color: #333;
                 }
                 
-                .nav-links a:hover {
-                    background: rgba(124, 58, 237, 0.05);
+                .nav-menu a:hover, .nav-links a:hover {
+                    background: rgba(168, 85, 247, 0.1);
+                    color: #a855f7;
+                    transform: translateY(-2px);
                 }
                 
-                .nav-links a:last-child {
-                    border-bottom: none;
+                .nav-menu a.active, .nav-links a.active {
+                    background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+                    color: white;
+                }
+                
+                body.mobile-menu-open {
+                    overflow: hidden;
                 }
             }
         `;
@@ -381,36 +402,96 @@ const NavigationController = {
     },
     
     /**
-     * Setup scroll to top functionality
+     * Setup scroll to top button
      */
     setupScrollToTop() {
-        // Create scroll to top button
-        const scrollToTopButton = document.createElement('button');
-        scrollToTopButton.classList.add('scroll-to-top');
-        scrollToTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
-        scrollToTopButton.setAttribute('aria-label', 'Scroll to top');
+        // Create scroll to top button if it doesn't exist
+        let scrollToTopBtn = document.querySelector('.scroll-to-top');
+        if (!scrollToTopBtn) {
+            scrollToTopBtn = document.createElement('button');
+            scrollToTopBtn.className = 'scroll-to-top';
+            scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            scrollToTopBtn.setAttribute('aria-label', 'Scroll to top');
+            document.body.appendChild(scrollToTopBtn);
+        }
         
-        document.body.appendChild(scrollToTopButton);
+        // Add scroll to top styles
+        this.addScrollToTopStyles();
         
-        // Show/hide scroll to top button
+        // Show/hide scroll to top button based on scroll position
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
-                scrollToTopButton.classList.add('visible');
+                scrollToTopBtn.classList.add('visible');
             } else {
-                scrollToTopButton.classList.remove('visible');
+                scrollToTopBtn.classList.remove('visible');
             }
         });
         
         // Handle scroll to top click
-        scrollToTopButton.addEventListener('click', () => {
+        scrollToTopBtn.addEventListener('click', () => {
             this.scrollToTop();
         });
     },
     
     /**
-     * Scroll to top of page
+     * Add scroll to top button styles
+     */
+    addScrollToTopStyles() {
+        if (document.getElementById('scroll-to-top-styles')) return;
+        
+        const style = document.createElement('style');
+        style.id = 'scroll-to-top-styles';
+        style.textContent = `
+            .scroll-to-top {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                width: 50px;
+                height: 50px;
+                background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.2rem;
+                box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3);
+                transition: all 0.3s ease;
+                z-index: 1000;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(20px);
+            }
+            
+            .scroll-to-top.visible {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            .scroll-to-top:hover {
+                background: linear-gradient(135deg, #9333ea 0%, #a855f7 100%);
+                box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4);
+                transform: translateY(-3px) scale(1.1);
+            }
+            
+            @media (max-width: 768px) {
+                .scroll-to-top {
+                    bottom: 20px;
+                    right: 20px;
+                    width: 45px;
+                    height: 45px;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    },
+    
+    /**
+     * Smooth scroll to top
      */
     scrollToTop() {
+        this.isScrolling = true;
+        
         if ('scrollBehavior' in document.documentElement.style) {
             window.scrollTo({
                 top: 0,
@@ -420,7 +501,9 @@ const NavigationController = {
             this.smoothScrollTo(0);
         }
         
-        this.updateActiveSection('home');
+        setTimeout(() => {
+            this.isScrolling = false;
+        }, 1000);
     },
     
     /**
@@ -428,114 +511,168 @@ const NavigationController = {
      */
     setupKeyboardNavigation() {
         document.addEventListener('keydown', (e) => {
-            // Handle arrow keys for section navigation
-            if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-                if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-                    e.preventDefault();
-                    this.navigateWithKeys(e.key === 'ArrowDown');
+            // ESC key to close mobile menu
+            if (e.key === 'Escape') {
+                const navMenu = document.querySelector('.nav-menu.mobile-open') || 
+                               document.querySelector('.nav-links.mobile-open');
+                if (navMenu) {
+                    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+                    navMenu.classList.remove('mobile-open');
+                    if (mobileToggle) {
+                        mobileToggle.classList.remove('active');
+                        mobileToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                    }
+                    document.body.classList.remove('mobile-menu-open');
                 }
             }
             
-            // Handle Home/End keys
-            if (e.key === 'Home') {
+            // Ctrl/Cmd + Home to go to top
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Home') {
                 e.preventDefault();
                 this.scrollToTop();
-            } else if (e.key === 'End') {
-                e.preventDefault();
-                this.scrollToBottom();
             }
         });
     },
     
     /**
-     * Navigate sections with keyboard
+     * Setup and manage loading screen
      */
-    navigateWithKeys(down = true) {
-        const sections = Array.from(document.querySelectorAll('section[id]'));
-        const currentIndex = sections.findIndex(section => section.id === this.currentSection);
-        
-        let nextIndex;
-        if (down) {
-            nextIndex = currentIndex < sections.length - 1 ? currentIndex + 1 : 0;
-        } else {
-            nextIndex = currentIndex > 0 ? currentIndex - 1 : sections.length - 1;
-        }
-        
-        if (sections[nextIndex]) {
-            this.scrollToElement(sections[nextIndex]);
-        }
-    },
-    
-    /**
-     * Scroll to bottom of page
-     */
-    scrollToBottom() {
-        const documentHeight = document.documentElement.scrollHeight;
-        const windowHeight = window.innerHeight;
-        
-        window.scrollTo({
-            top: documentHeight - windowHeight,
-            behavior: 'smooth'
+    setupLoadingScreen() {
+        // Hide loading screen after page load
+        window.addEventListener('load', () => {
+            this.hideLoadingScreen();
         });
+        
+        // Fallback: hide loading screen after 3 seconds
+        setTimeout(() => {
+            this.hideLoadingScreen();
+        }, 3000);
     },
     
     /**
-     * Handle hash navigation on page load
+     * Show loading screen
      */
-    handleHashNavigation() {
-        const hash = window.location.hash;
-        if (hash) {
-            const targetElement = document.querySelector(hash);
-            if (targetElement) {
-                // Wait for page to load completely
-                setTimeout(() => {
-                    this.scrollToElement(targetElement);
-                }, 100);
-            }
+    showLoadingScreen() {
+        const loadingScreen = document.getElementById('loadingScreen');
+        if (loadingScreen) {
+            loadingScreen.style.display = 'flex';
+            loadingScreen.style.opacity = '1';
         }
     },
     
     /**
-     * Handle browser back/forward navigation
+     * Hide loading screen
      */
-    handleBrowserNavigation() {
-        window.addEventListener('popstate', () => {
-            const hash = window.location.hash;
-            if (hash) {
-                const targetElement = document.querySelector(hash);
-                if (targetElement) {
-                    this.scrollToElement(targetElement);
-                }
-            } else {
-                this.scrollToTop();
-            }
-        });
+    hideLoadingScreen() {
+        const loadingScreen = document.getElementById('loadingScreen');
+        if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 300);
+        }
+    },
+    
+    /**
+     * Track navigation for analytics
+     */
+    trackNavigation(url, pageName) {
+        // Google Analytics tracking (if available)
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_navigation', {
+                'page_title': pageName,
+                'page_location': url,
+                'event_category': 'navigation'
+            });
+        }
+        
+        // Console logging for development
+        console.log(`Navigation tracked: ${pageName} -> ${url}`);
+    },
+    
+    /**
+     * Utility method to get current page name
+     */
+    getCurrentPage() {
+        return window.location.pathname.split('/').pop() || 'index.html';
+    },
+    
+    /**
+     * Utility method to check if user is on mobile device
+     */
+    isMobileDevice() {
+        return window.innerWidth <= 768 || 
+               /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
 };
 
 /**
- * Utility function for external use
+ * Theme toggle functionality (if needed)
  */
-function scrollToSection(sectionId) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-        NavigationController.scrollToElement(element);
+function toggleTheme() {
+    const body = document.body;
+    const themeIcon = document.querySelector('.theme-toggle i');
+    
+    body.classList.toggle('dark-theme');
+    
+    if (body.classList.contains('dark-theme')) {
+        themeIcon?.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        themeIcon?.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('theme', 'light');
     }
 }
 
 /**
- * Initialize navigation when DOM is ready
+ * Initialize theme on page load
  */
-document.addEventListener('DOMContentLoaded', () => {
-    NavigationController.init();
-    NavigationController.handleHashNavigation();
-    NavigationController.handleBrowserNavigation();
+function initializeTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const themeIcon = document.querySelector('.theme-toggle i');
+    
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        themeIcon?.classList.replace('fa-sun', 'fa-moon');
+    }
+}
+
+/**
+ * Global error handler for navigation
+ */
+window.addEventListener('error', (e) => {
+    console.error('Navigation Error:', e.error);
+    // Hide loading screen in case of error
+    NavigationController.hideLoadingScreen();
 });
 
-// Export for use in other modules
+/**
+ * Initialize everything when DOM is loaded
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded, initializing navigation...');
+    NavigationController.init();
+    initializeTheme();
+});
+
+/**
+ * Handle page visibility changes
+ */
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+        // Page became visible, refresh active navigation
+        NavigationController.setupActiveNavigation();
+    }
+});
+
+/**
+ * Export NavigationController for use in other scripts
+ */
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        NavigationController,
-        scrollToSection
-    };
+    module.exports = NavigationController;
 }
+
+/**
+ * Make NavigationController globally available
+ */
+window.NavigationController = NavigationController;
