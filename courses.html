@@ -15,7 +15,864 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/courses.css">
-    <link rel="stylesheet" href="assets/css/course-detail.css">
+
+    <!-- ADD THIS UPDATED STYLE SECTION TO REPLACE YOUR EXISTING ONE -->
+<style>
+/* FIXED VERSION - ADDRESSES ALL ISSUES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #8B5CF6;
+    --primary-light: #A855F7;
+    --primary-dark: #7C3AED;
+    --secondary-color: #667eea;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-light: #94a3b8;
+    --border-color: #e2e8f0;
+    --shadow-light: rgba(139, 92, 246, 0.1);
+    --shadow-medium: rgba(139, 92, 246, 0.2);
+    --shadow-heavy: rgba(139, 92, 246, 0.3);
+    --gradient-primary: linear-gradient(135deg, #8B5CF6 0%, #A855F7 50%, #667eea 100%);
+}
+
+/* DARK THEME VARIABLES */
+[data-theme="dark"] {
+    --bg-primary: #0f0f23;
+    --bg-secondary: #1a1a2e;
+    --bg-tertiary: #16213e;
+    --text-primary: #eee6ff;
+    --text-secondary: #b8b4d1;
+    --text-light: #8b85a8;
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Header Styles */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .header {
+    background: rgba(15, 15, 35, 0.95);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--gradient-primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-menu a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: var(--primary-color);
+    background: rgba(139, 92, 246, 0.1);
+}
+
+/* FIXED: Hero Section with Original Gradient */
+.courses-hero {
+    background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 50%, #667eea 100%);
+    color: white;
+    padding: 8rem 2rem 6rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 80px;
+}
+
+.courses-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.courses-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 0 2rem;
+}
+
+.courses-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.courses-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+/* FIXED: Responsive Search Box */
+.course-search {
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.course-search input {
+    width: 100%;
+    padding: 1rem 4rem 1rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.course-search input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.course-search input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.course-search button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.course-search button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Category Filter Section */
+.category-filter-section {
+    background: var(--bg-primary);
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    padding: 1rem 2rem;
+    border: 2px solid var(--border-color);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.tab-button.active,
+.tab-button:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+}
+
+/* Main Courses Grid Section */
+.courses-grid-section {
+    padding: 4rem 2rem;
+    background: var(--bg-primary);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+/* Courses Grid Layout */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Course Card Styling */
+.course-card {
+    background: var(--bg-secondary);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px var(--shadow-light);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.course-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 60px var(--shadow-heavy);
+    border-color: var(--primary-light);
+}
+
+/* Course Thumbnail */
+.course-thumbnail {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.course-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.course-card:hover .course-thumbnail img {
+    transform: scale(1.1);
+}
+
+.course-level {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(139, 92, 246, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+}
+
+/* Course Content Container */
+.course-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.course-category {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.course-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.course-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+/* Course Meta Information */
+.course-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.course-meta > div {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--text-secondary);
+}
+
+.course-meta i {
+    color: var(--primary-color);
+    width: 14px;
+}
+
+/* Course Highlights */
+.course-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.highlight-tag {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--primary-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.3s ease;
+}
+
+.highlight-tag:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Course Actions */
+.course-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.btn-know-more,
+.btn-join-now {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.btn-know-more {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--primary-color);
+    border: 2px solid rgba(139, 92, 246, 0.2);
+}
+
+.btn-know-more:hover {
+    background: rgba(139, 92, 246, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.2);
+}
+
+.btn-join-now {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.btn-join-now:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+}
+
+/* CTA Section */
+.cta-section {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2.5rem;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: white;
+    color: var(--primary-color);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* FIXED: Theme Toggle */
+.theme-toggle {
+    width: 50px;
+    height: 28px;
+    background: var(--bg-secondary);
+    border-radius: 20px;
+    border: 2px solid var(--border-color);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-slider {
+    width: 24px;
+    height: 24px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 2px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.7rem;
+}
+
+[data-theme="dark"] .theme-slider {
+    left: 22px;
+}
+
+/* FIXED: Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .courses-hero {
+        padding: 6rem 1rem 4rem;
+    }
+
+    .courses-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .courses-hero p {
+        font-size: 1.1rem;
+    }
+
+    /* FIXED: Mobile Search */
+    .course-search {
+        max-width: 90%;
+        margin: 1rem auto 0;
+    }
+
+    .course-search input {
+        padding: 0.8rem 3.5rem 0.8rem 1.2rem;
+        font-size: 1rem;
+    }
+
+    .course-search button {
+        width: 40px;
+        height: 40px;
+        right: 6px;
+    }
+
+    .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .course-actions {
+        flex-direction: column;
+    }
+
+    .category-tabs {
+        padding: 0 1rem;
+        gap: 0.5rem;
+    }
+
+    .tab-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .courses-hero h1 {
+        font-size: 2rem;
+    }
+
+    .course-search input {
+        font-size: 0.95rem;
+        padding: 0.7rem 3rem 0.7rem 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Hide/Show course cards for filtering */
+.course-card[style*="display: none"] {
+    display: none !important;
+}
+
+.course-card:not([style*="display: none"]) {
+    display: flex !important;
+    flex-direction: column !important;
+}
+</style>
+
+<!-- FIXED: Updated JavaScript for Button Redirects and Theme Toggle -->
+<script>
+// FIXED: Updated course data and functions
+const coursesData = {
+    'data-analytics': {
+        title: 'Master Data Analytics',
+        category: 'technical',
+        displayCategory: 'Data & Analytics',
+        level: 'Beginner to Advanced',
+        duration: '12 Weeks',
+        projects: '8 Projects',
+        rating: '4.8',
+        reviews: '234',
+        price: '₹15,000',
+        discountPrice: '₹12,000',
+        students: '2,340',
+        description: 'Master data analysis with Python, SQL, and advanced visualization tools. Learn to extract insights from complex datasets.'
+    },
+    'python-programming': {
+        title: 'Python Programming Pro',
+        category: 'technical',
+        displayCategory: 'Programming',
+        level: 'Beginner to Expert',
+        duration: '16 Weeks',
+        projects: '12 Projects',
+        rating: '4.9',
+        reviews: '456',
+        price: '₹18,000',
+        discountPrice: '₹14,000',
+        students: '3,120',
+        description: 'Complete Python mastery from basics to advanced topics including web development, automation, and data science.'
+    },
+    'digital-marketing': {
+        title: 'Digital Marketing Expert',
+        category: 'business',
+        displayCategory: 'Marketing',
+        level: 'Beginner to Advanced',
+        duration: '10 Weeks',
+        projects: '6 Projects',
+        rating: '4.7',
+        reviews: '321',
+        price: '₹16,000',
+        discountPrice: '₹12,000',
+        students: '1,890',
+        description: 'Master digital marketing strategies including SEO, social media, PPC, and analytics to drive business growth.'
+    },
+    'sql-database': {
+        title: 'SQL Database Management',
+        category: 'technical',
+        displayCategory: 'Database',
+        level: 'Intermediate',
+        duration: '8 Weeks',
+        projects: '5 Projects',
+        rating: '4.6',
+        reviews: '189',
+        price: '₹12,000',
+        discountPrice: '₹9,000',
+        students: '987',
+        description: 'Master database design, complex queries, stored procedures, and database optimization techniques for enterprise applications.'
+    },
+    'hr-management': {
+        title: 'HR Management Pro',
+        category: 'business',
+        displayCategory: 'Human Resources',
+        level: 'Intermediate to Advanced',
+        duration: '8 Weeks',
+        projects: '6 Case Studies',
+        rating: '4.7',
+        reviews: '143',
+        price: '₹14,000',
+        discountPrice: '₹11,000',
+        students: '654',
+        description: 'Comprehensive HR management covering recruitment, employee relations, performance management, and HR analytics.'
+    },
+    'tally-erp': {
+        title: 'Tally ERP 9 Complete',
+        category: 'business',
+        displayCategory: 'Accounting',
+        level: 'Beginner to Advanced',
+        duration: '6 Weeks',
+        projects: '4 Projects',
+        rating: '4.6',
+        reviews: '98',
+        price: '₹10,000',
+        discountPrice: '₹8,000',
+        students: '432',
+        description: 'Master financial accounting and inventory management with Tally ERP 9 software for business accounting solutions.'
+    }
+};
+
+// Course System Controller
+class CourseSystemController {
+    constructor() {
+        this.currentCategory = 'all';
+        this.searchQuery = '';
+        this.init();
+    }
+
+    init() {
+        this.setupEventListeners();
+    }
+
+    setupEventListeners() {
+        // Category filter buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('tab-button')) {
+                this.handleCategoryFilter(e.target);
+            }
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('courseSearch');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                this.handleSearch(e.target.value);
+            });
+        }
+    }
+
+    handleCategoryFilter(button) {
+        document.querySelectorAll('.tab-button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        button.classList.add('active');
+        this.currentCategory = button.getAttribute('data-category');
+        this.filterCourses();
+    }
+
+    handleSearch(query) {
+        this.searchQuery = query.toLowerCase();
+        this.filterCourses();
+    }
+
+    filterCourses() {
+        const courseCards = document.querySelectorAll('.course-card');
+        courseCards.forEach(card => {
+            const courseId = card.getAttribute('data-course-id');
+            const course = coursesData[courseId];
+            const category = card.getAttribute('data-category');
+            
+            if (!course) return;
+            
+            const matchesCategory = this.currentCategory === 'all' || category === this.currentCategory;
+            const matchesSearch = this.searchQuery === '' || 
+                course.title.toLowerCase().includes(this.searchQuery) ||
+                course.description.toLowerCase().includes(this.searchQuery);
+
+            if (matchesCategory && matchesSearch) {
+                card.style.display = 'flex';
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+}
+
+// FIXED: Button redirect functions
+function openCourseDetails(courseId) {
+    // Redirect to course detail page
+    window.location.href = `course-detail.html?course=${courseId}`;
+}
+
+function openIndividualCourses(courseId) {
+    // Redirect to course enrollment page
+    window.location.href = `course-enrollment.html?course=${courseId}`;
+}
+
+// FIXED: Theme toggle function
+function toggleTheme() {
+    const body = document.body;
+    const themeIcon = document.getElementById('theme-icon');
+    const currentTheme = body.getAttribute('data-theme');
+    
+    if (currentTheme === 'dark') {
+        body.setAttribute('data-theme', 'light');
+        if (themeIcon) {
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+        localStorage.setItem('theme', 'light');
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        if (themeIcon) {
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// Initialize theme on page load
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const body = document.body;
+    const themeIcon = document.getElementById('theme-icon');
+    
+    body.setAttribute('data-theme', savedTheme);
+    
+    if (themeIcon) {
+        if (savedTheme === 'dark') {
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        } else {
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+    }
+}
+
+// Initialize everything when DOM loads
+document.addEventListener('DOMContentLoaded', () => {
+    window.courseSystem = new CourseSystemController();
+    initTheme();
+    console.log('Course System Initialized Successfully!');
+});
+
+// Header scroll effect
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    if (header) {
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.boxShadow = 'none';
+        }
+    }
+});
+</script>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -37,7 +894,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="courses.html" class="active">Courses</a></li>
                     <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
             <div class="nav-controls">
@@ -305,7 +1162,7 @@
                 <button class="btn-primary" onclick="document.querySelector('.courses-grid').scrollIntoView()">
                     <i class="fas fa-graduation-cap"></i> Browse All Courses
                 </button>
-                <button class="btn-secondary" onclick="window.location.href='#contact'">
+                <button class="btn-secondary" onclick="window.location.href='contact.html'">
                     <i class="fas fa-phone"></i> Talk to Expert
                 </button>
             </div>

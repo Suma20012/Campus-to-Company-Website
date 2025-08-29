@@ -653,6 +653,34 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Enhanced Course System with Individual Enrollment Initialized!');
 });
 
+// Add this to your existing JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Find all expert consultation buttons
+    const expertButtons = document.querySelectorAll('button, a');
+    
+    expertButtons.forEach(button => {
+        const buttonText = button.textContent.toLowerCase();
+        
+        if (buttonText.includes('talk to expert') || 
+            buttonText.includes('contact expert') ||
+            buttonText.includes('expert consultation')) {
+            
+            // Make it redirect to contact page
+            button.addEventListener('click', function(e) {
+                if (button.getAttribute('href') !== 'contact.html') {
+                    e.preventDefault();
+                    window.location.href = 'contact.html';
+                }
+            });
+            
+            // Update href for anchor tags
+            if (button.tagName.toLowerCase() === 'a') {
+                button.href = 'contact.html';
+            }
+        }
+    });
+});
+
 // Export for use in other modules
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { CourseSystemController, coursesData };
